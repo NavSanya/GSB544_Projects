@@ -3,6 +3,11 @@ title: Quarto Computations
 echo: false
 fig-height: 3.5
 fig-width: 6
+format:
+        html:
+                toc: true
+                code-fold: true
+                embed-resources: true
 ---
 
 This dataset contains a subset of the fuel economy data from the EPA.
@@ -33,6 +38,8 @@ Additionally, mileage is higher for cars with fewer cylinders.
 ```
 
 ```{python}
+#| echo: true
+#| label: nobs
 len(mpg)
 ```
 
