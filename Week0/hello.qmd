@@ -6,6 +6,9 @@ format:
                 embed-resources: true
 ---
 
+https://github.com/NavSanya/GSB544_Projects/tree/main/Week0
+
+
 ```{python}
 #| label: load-packages
 #| include: false
