@@ -14,31 +14,36 @@ include-in-header:
 mainfont: "Englebert, cursive"
 ---
 
-
-
 # Chapter 10 — Introduction to Predictive Modeling
 
 ## Concepts
-- Predictive modeling maps features $X$ to a target $y$. We evaluate generalization on **unseen data**.
+Predictive modeling aims to learn a mapping from input features ($X$) to an outcome ($y$) using data. The fundamental goal is to generalize — i.e., perform well on unseen data rather than memorizing patterns in the training set.
 
-- Predictors (X): Input variables/features.
+Predictors (X): Input variables or features that describe each observation. These could be numeric (e.g., income, age) or categorical (e.g., gender, city).
 
-- Target (y): What we’re trying to predict.
+Target (y): The outcome variable you want to predict. For regression tasks, this is continuous (e.g., price); for classification, categorical (e.g., yes/no).
 
-- Model: A mathematical relationship between X and y.
+Model: A mathematical function that approximates how $X$ influences $y$. Examples include linear regression, decision trees, and neural networks.
 
-- Training vs Testing data:
+Training vs Testing:
 
-        - Train on one subset.
+Training data: Used to fit (learn) the model parameters.
 
-        - Test (evaluate) on another — simulates new, unseen data.
+Testing data: Used to evaluate generalization performance — how well the model predicts unseen data.
 
-- Workflow (sklearn-style): **split → preprocess → fit → predict → evaluate**.
+## Key workflow
+
+In modern machine learning (e.g., scikit-learn), the process is typically:
+
+split → preprocess → fit → predict → evaluate
+
+This structure ensures a consistent, reproducible workflow where preprocessing and modeling steps can be combined into pipelines.
 
 ## Generalized code
 
 ```python
 import pandas as pd
+from math import sqrt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
@@ -47,11 +52,9 @@ df = pd.read_csv("your_data.csv")
 y = df["target"]
 X = df.drop(columns=["target"])
 
-# or
-
-y = df["target"]
-X = df[["feature_1", "feature_2", ..., "feature_n"]]
-
+# or manually select
+# y = df["target"]
+# X = df[["feature_1", "feature_2", ..., "feature_n"]]
 
 X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.25, random_state=42)
 
@@ -60,127 +63,172 @@ m.fit(X_tr, y_tr)
 pred = m.predict(X_te)
 
 print("RMSE:", sqrt(mean_squared_error(y_te, pred)))
+# rmse = mean_squared_error(y_te, y_pred, squared=False)
 print("R2:", r2_score(y_te, pred))
 ```
 
 ## Things to remember
 - Always split data before fitting.
-
 - Metrics:
-
-        - R²: variance explained.
-
-        - RMSE: average prediction error.
-
+  - R²: variance explained.
+  - RMSE: average prediction error.
 - Never evaluate only on the training set!
 
 ## Interpretations and key Insights
-$R^2$ (Coefficient of Determination):
-Measures how much variance in $y$ is explained by $X$ (closer to 1 = better).
+### $R^2$ (Coefficient of Determination)
 
-RMSE (Root Mean Squared Error):
-Measures the typical prediction error magnitude (same units as y).
+Represents the proportion of variance in the target variable that the model explains. Mathematically: 
 
-Always evaluate on test data — performance on training data often looks deceptively good (overfitting).
+$$R^2 = 1 - \frac{\text{SS}{res}}{\text{SS}{tot}}$$
 
-Sanity check: A model performing worse than predicting the mean of y is a red flag.
+where $\text{SS}{res}$ is the residual sum of squares and $\text{SS}{tot}$ is the total sum of squares.
+
+$R^2 = 1$ → perfect predictions.
+
+$R^2 = 0$ → model is no better than predicting the mean.
+
+$R^2 < 0$ → model is worse than predicting the mean.
+
+Interpret with caution: high $R^2$ does not imply causation or correctness; it only reflects goodness-of-fit.
+
+### RMSE (Root Mean Squared Error)
+
+Gives the average magnitude of error between predictions and true values, in the same units as $y$. Lower RMSE = better predictive accuracy.
+
+$$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2}$$
+
+where $n$ is the number of data points, $y_i$ are the true values, and $\hat{y}_i$ are the predicted values.
+
+RMSE penalizes large errors more than small ones because of the square term. Compare RMSE to the scale of $y$ to interpret practical significance.
+
+## Generalization & Sanity Checks
+
+A model performing well on the training data but poorly on test data indicates overfitting.
+
+Always benchmark against a baseline (e.g., predicting the mean). If the model cannot outperform it, revisit feature selection or modeling approach.
 
 # Chapter 11 — Multiple Linear Regression (MLR) & Polynomials
 
 ## Concepts
-- **MLR:** $\hat y = \beta_0 + \beta_1.x_1 + \beta_2.x_2 + \dots + \beta_n.x_n$.
+- **MLR:** $\hat y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n$.
+- Each $\beta_i$ captures the marginal effect of $x_i$ on $y$, holding all other features constant. MLR assumes:
+  - Linearity – relationship between features and target is linear in parameters.
+  - Independence of observations.
+- No multicollinearity among predictors.
+- Homoscedasticity – constant variance of residuals.
+- Normally distributed errors (for inference).
+- Polynomial features introduce nonlinear patterns while keeping the model linear in coefficients.
 
-- Handle **categoricals** (one-hot) & **scale** numerics when needed.
-
-- Each $\beta_i$ represents the marginal effect of $x_i$ on y, holding others constant.
-
-- Polynomial features (e.g., $x^2$) introduce nonlinearity while keeping the model linear in parameters.
-
-- Works well when relationship between features and target is approximately linear.
-
-- Issues: multicollinearity, overfitting, nonlinear patterns.
-
-## Generalized code: MLR
+## Generalized code: MLR with preprocessing pipeline
 ```python
 from sklearn.compose import ColumnTransformer, make_column_selector as selector
-from sklearn.preprocessing import OneHotEncoder, StandardScaler, PolynomialFeatures
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LinearRegression
 
-num_sel = selector(dtype_include="number")
-cat_sel = selector(dtype_include="object")
 
-poly_cols = ["num_feature_1"]  # pick columns likely to be nonlinear
+num = selector(dtype_include="number")
+cat = selector(dtype_include="object")
+
 
 pre = ColumnTransformer([
-    ("poly", Pipeline([("poly", PolynomialFeatures(degree=2, include_bias=False)),
-                       ("sc", StandardScaler())]), poly_cols), # polynomials
-    ("num", StandardScaler(), lambda X: [c for c in num_sel(X) if c not in poly_cols]),
-    ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_sel)
+("cat", OneHotEncoder(handle_unknown="ignore"), cat),
+("num", StandardScaler(), num)
 ])
 
-model = Pipeline([
-        ("prep", pre), 
-        ("lm", LinearRegression())
-        ])
 
-model.fit(X_tr, y_tr)
-print("Test R2:", model.score(X_te, y_te))
+pipe = Pipeline([("prep", pre), ("model", LinearRegression())])
+pipe.fit(X_tr, y_tr)
+print("Test R2:", pipe.score(X_te, y_te))
 ```
+
+## Generalized code: Add polynomial features to selected numeric columns
+```python
+from sklearn.preprocessing import PolynomialFeatures
+
+
+poly_cols = ["num_feature_1"] # pick suspected nonlinear feature(s)
+pre_poly = ColumnTransformer([
+("poly", Pipeline([
+("poly", PolynomialFeatures(degree=2, include_bias=False)),
+("sc", StandardScaler())
+]), poly_cols),
+("num", StandardScaler(), [c for c in X.columns if X[c].dtype != "object" and c not in poly_cols]),
+("cat", OneHotEncoder(handle_unknown="ignore"), [c for c in X.columns if X[c].dtype == "object"])
+])
+
+
+pipe_poly = Pipeline([("prep", pre_poly), ("model", LinearRegression())])
+pipe_poly.fit(X_tr, y_tr)
+print("Test R2 (poly):", pipe_poly.score(X_te, y_te))
+```
+
 ## Interpretation
+### Coefficients
+Each coefficient $\beta_i$ measures how much $y$ changes for a one-unit increase in $x_i$, holding other predictors constant. However, if predictors are correlated, coefficients can become unstable and difficult to interpret (multicollinearity).
 
-Compare linear vs. polynomial RMSE/R² on test data to check if added complexity helps.
+### Scaling and Interpretation
 
-Examine residual plots — random scatter = good fit; patterns = missing relationships.
+After scaling (StandardScaler), coefficients represent standardized effects (per 1 standard deviation change in $x$). This allows for comparing variable importance across features.
 
-Coefficient interpretation: In scaled models, compare importance via standardized coefficients.
+### Polynomial Features
 
-## Takeaways
-- Feature engineering (like PolynomialFeatures) captures nonlinearity.
+Adding squared or higher-order terms lets the model capture curvature in the relationship:
 
-- Always scale numeric features before regression.
+- If the relationship between experience and salary is concave, a quadratic term (experience²) can model diminishing returns.
+- Always validate whether added complexity reduces test error (not just train error).
 
-- Use pipelines for cleaner, reproducible workflows
+### Residual Analysis
+
+Plot residuals vs predicted values:
+
+- Random scatter → model fits well.
+- Patterns (e.g., curve or funnel shape) → nonlinearity or heteroskedasticity.
+```python
+import pandas as pd
+from plotnine import ggplot, aes, geom_point, geom_hline, labs, theme_minimal
+
+
+resid = y_te - y_pred
+plot_df = pd.DataFrame({"Predicted": y_pred, "Residuals": resid})
+(
+ggplot(plot_df, aes("Predicted", "Residuals"))
++ geom_point()
++ geom_hline(yintercept=0)
++ labs(title="Residuals vs Predicted")
++ theme_minimal()
+)
+```
 
 ## Interaction terms
 If your model has 2 predictors $x_1$ and $x_2$:
-$$y = \beta_0 + \beta_1.x_1 + \beta_2.x_2 + \beta_3.(x_1.x_2) + \epsilon$$
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 x_2) + \epsilon$$
 
-The interaction term $(x_1.x_2)$ measures how the relationship between $x_1$ and y changes depending on $x_2$.
+A positive interaction ($\beta_3 > 0$) means the effect of $x_1$ increases with $x_2$.
 
+## Generic Code: Interaction terms among numeric variables only
 ```python
-import pandas as pd
-
-# Suppose you have numeric columns
-df["income_x_age"] = df["income"] * df["age"]
-
-# or
-
 from sklearn.preprocessing import PolynomialFeatures
 
-X = df[["income", "age", "education_years"]]
+num_cols = [c for c in X.columns if X[c].dtype != "object"]
+pre_int = ColumnTransformer([
+        ("num_int", Pipeline([
+                ("sc", StandardScaler()),
+                ("poly", PolynomialFeatures(degree=2, include_bias=False, interaction_only=True))
+        ]), num_cols),
+        ("cat", OneHotEncoder(handle_unknown="ignore"), [c for c in X.columns if X[c].dtype == "object"])
+        ])
+pipe_int = Pipeline([("prep", pre_int), ("model", LinearRegression())])
+pipe_int.fit(X_tr, y_tr)
+print("Test R2 (interactions):", pipe_int.score(X_te, y_te))
+```
 
-# degree=2 adds squared and pairwise interaction terms
-poly = PolynomialFeatures(degree=2, include_bias=False, interaction_only=True) # income*age, income*education_years
-X_inter = poly.fit_transform(X)
+## Generic code: Selected columns
+```python
+from sklearn.preprocessing import PolynomialFeatures
 
-print(poly.get_feature_names_out(X.columns))
-
-# or
-
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder, StandardScaler, PolynomialFeatures
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-
-# Sample data
-X = df[["income", "age", "sex"]]
-y = df["spending"]
-
-# Define transformations
-num_cols = ["income", "age"]
-cat_cols = ["sex"]
+num_cols = ["num_feature_1", "num_feature_2"]
+cat_cols = ["cat_feature_1"]
 
 pre = ColumnTransformer([
     ("num", Pipeline([
@@ -190,118 +238,121 @@ pre = ColumnTransformer([
     ("cat", OneHotEncoder(drop="first"), cat_cols)
 ])
 
-model = Pipeline([
-    ("prep", pre),
-    ("lm", LinearRegression())
-])
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
-model.fit(X_train, y_train)
-
-print("Test R²:", model.score(X_test, y_test))
-
+model = Pipeline([("prep", pre), ("lm", LinearRegression())])
+model.fit(X_tr, y_tr)
+print("Test R²:", model.score(X_te, y_te))
 ```
 
+
+**Interpretation of interactions:** The marginal effect of $x_1$ on $y$ depends on the level of $x_2$ and vice versa.
 
 # Chapter 12 — Model Validation
 
 ## Concepts
-- Guard against **overfitting** via **train/test split** and **cross-validation**.
+Model validation ensures the model generalizes beyond training data. Key ideas:
 
-- Metrics for regression: 
+- Overfitting: Model learns noise instead of signal → great on training, poor on test.
+- Underfitting: Model too simple → poor on both training and test.
 
-        MAE: Mean Absolute Error — average absolute deviation.
+Metrics:
 
-        RMSE: Sensitive to large errors.
+- MAE: Mean absolute error; interpretable as the average magnitude of mistakes.
+- RMSE: Penalizes large deviations more strongly.
+- R²: Explains variance captured by the model.
 
-        R²: Proportion of explained variance.
-
-## Code: quick validation
+## Generalized code
 ```python
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 pipe.fit(X_tr, y_tr)
-pred = pipe.predict(X_te)
-print({"MAE": mean_absolute_error(y_te, pred),
-       "RMSE": mean_squared_error(y_te, pred, squared=False),
-       "R2": r2_score(y_te, pred)})
+tr_pred = pipe.predict(X_tr)
+te_pred = pipe.predict(X_te)
+
+
+def metrics(y_true, y_hat):
+return {
+        "MAE": mean_absolute_error(y_true, y_hat),
+        "RMSE": mean_squared_error(y_true, y_hat, squared=False),
+        "R2": r2_score(y_true, y_hat)
+}
+
+
+print("Train:", metrics(y_tr, tr_pred))
+print("Test:", metrics(y_te, te_pred))
 ```
 
-## Interpretation
-Use cross-validation to get a more reliable estimate.
+## Underfitting vs Overfitting — how to see it in outputs
+### Overfitting Example
 
-A good model has similar performance across folds (low variance).
+Suppose training R² = 0.95 but test R² = 0.40. This suggests the model is too complex or capturing random fluctuations specific to training data. Regularization or simplification may help.
 
-Always look for bias-variance tradeoff:
+### Underfitting Example
 
-        High bias → underfit.
+Training R² = 0.40 and test R² = 0.42. Both are low — the model cannot capture essential patterns. Consider adding features or using nonlinear models.
 
-        High variance → overfit.
+### Cross-Validation
+
+Instead of one train/test split, k-fold CV provides a more stable estimate by rotating through multiple train/test partitions.
+
+```python
+from sklearn.model_selection import cross_val_score
+import numpy as np
+
+
+cv_scores = cross_val_score(pipe, X, y, cv=5, scoring="r2")
+print("CV R2 mean:", np.mean(cv_scores), "±", np.std(cv_scores))
+```
 
 # Chapter 13 — Pipelines, Cross-Validation, Hyperparameter Tuning
 
-## Concepts
-- **Pipelines** combine preprocessing + model consistently.
+## Pipeline (all steps explained)
+1. **Column identification:** Which columns are numeric vs categorical.
+2. **Dummyfying (One-Hot Encoding):** Turn categories into indicator columns.
+3. **Standardization (Scaling):** Center (mean 0) and scale (std 1) numeric features so models are comparable and well-conditioned.
+4. **(Optional) Feature engineering:** Polynomials, interactions.
+5. **Model fitting:** Fit the estimator on transformed data.
+6. **Evaluation:** Use the exact same transformations on test data inside the pipeline; compute metrics.
+7. **Tuning:** Use CV-based search (Grid/Randomized) over hyperparameters (including preprocessing choices).
 
-- **Cross-validation** gives a robust performance estimate.
+### Why pipelines?
+- Prevent **data leakage** (no peeking at test data during preprocessing).
+- Make code reproducible and compact.
+- Allow **CV** and **GridSearchCV** to correctly repeat preprocessing inside each fold.
 
-- **GridSearchCV** (or RandomizedSearchCV) tunes hyperparameters within the pipeline.
+## Dummyfying — explanation
+- Many models require numeric inputs. **One-Hot Encoding** converts a single categorical column with $k$ levels into $k$ binary columns (or $k-1$ with `drop="first"` to avoid multicollinearity).  
+- Use `handle_unknown="ignore"` to safely handle categories not seen in training.
 
-## Code: pipeline + CV + grid search
+## Standardize — explanation
+- Put numeric features on the same scale. Helps models that are sensitive to feature magnitude (kNN, SVM, penalized regression, gradient methods).  
+- Common scaler: `StandardScaler()` (zero mean, unit variance). Fit scaler **only on training** data (Pipeline handles this).
+
+## Cross-Validation (CV)
 ```python
-from sklearn.model_selection import cross_val_score, GridSearchCV
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.model_selection import cross_val_score, GridSearchCV, StratifiedKFold
 import numpy as np
 
-# Pipeline with categorical + numeric preprocessing
-numeric = selector(dtype_include="number")
-categorical = selector(dtype_include="object")
+scores = cross_val_score(pipe, X, y, cv=5, scoring="r2")
+print("CV mean R²:", np.mean(scores), "±", np.std(scores))
 
-ct = ColumnTransformer([
-    ('cat', OneHotEncoder(drop='first'), categorical),
-    ('num', StandardScaler(), numeric)
-])
-
-pipe = Pipeline([
-    ('prep', ct),
-    ('model', LinearRegression())
-])
-
-# Cross-validation
-scores = cross_val_score(pipe, X, y, cv=5, scoring='r2')
-print("Mean R²:", np.mean(scores))
-
-# Grid Search example
-params = {'model__fit_intercept': [True, False]}
-grid = GridSearchCV(pipe, params, cv=5, scoring='r2')
+param_grid = {
+    "model__fit_intercept": [True, False]
+}
+grid = GridSearchCV(pipe, param_grid, cv=5, scoring="r2")
 grid.fit(X, y)
-print(grid.best_params_)
-
+print("Best params:", grid.best_params_)
+print("Best CV score:", grid.best_score_)
 ```
-## Takeaways
-
-- Pipelines ensure identical preprocessing during training/testing.
-
-- cross_val_score: robust estimate of performance.
-
-- GridSearchCV automates tuning.
-
 ## Interpretation
-
-CV reduces dependency on a lucky train-test split.
-
-Grid search integrates CV to find the best parameters.
-
-Use RandomizedSearchCV for faster tuning with large grids.
+- Best params: indicate the combination giving the highest CV score.
+- CV mean/std: stability measure; high std suggests sensitivity to data splits.
 
 # Chapter 14 — Penalized Regression (Ridge, Lasso, Elastic Net)
 
 ## Math
-- Ridge: $\min_\beta \sum (y-X\beta)^2 + \lambda \sum \beta_j^2$ - penalty - shrinks coefficients.
-
-- Lasso: $\min_\beta \sum (y-X\beta)^2 + \lambda \sum |\beta_j|$ - penalty - can set some coefficients to zero.
-
-- Elastic Net: $\min_\beta \sum (y-X\beta)^2 + \lambda\left[\alpha \sum |\beta_j| + (1-\alpha)\sum \beta_j^2\right]$ - combination of both.
+- Ridge (L2): $\min_\beta \sum (y-X\beta)^2 + \lambda \sum \beta_j^2$ — Shrinks coefficients smoothly; useful for multicollinearity..
+- Lasso (L1): $\min_\beta \sum (y-X\beta)^2 + \lambda \sum |\beta_j|$ — can set some coefficients to exactly zero - Encourages sparsity; performs feature selection..
+- Elastic Net: combine L1 + L2 with mixing parameter $\alpha$.
 
 ## Code: quick comparison
 ```python
@@ -314,168 +365,286 @@ enet = ElasticNet(alpha=0.01, l1_ratio=0.5, max_iter=10000)
 for model in [ridge, lasso, enet]:
     model.fit(X_train, y_train)
     print(model.__class__.__name__, model.score(X_test, y_test))
-
 ```
 
 ## Takeaways
 - Use Ridge when all variables are relevant.
-
 - Use Lasso for feature selection.
-
 - Use ElasticNet when features are correlated.
-
 - Tune alpha carefully — too high = underfit.
+
+## Interpretation
+- As $\lambda$ increases, coefficients shrink toward zero.
+- Ridge never sets coefficients exactly to zero; Lasso can.
+- Elastic Net useful when predictors are correlated (Lasso may arbitrarily pick one).
 
 # Chapter 15 — Nonparametric Methods: kNN & Trees
 
-## Concepts
-- **kNN (classification/regression):** predict from the neighborhood of similar points.
+## kNN (regression & classification)
+**Prediction method:**
+- Regression: $\hat y$ = average of the $k$ nearest neighbors’ $y$ values. (`KNeighborsRegressor.predict`)
+- Classification: $\hat y$ = majority vote among $k$ nearest neighbors. (`KNeighborsClassifier.predict`); class probabilities via `predict_proba` = fraction of neighbors in each class.
 
-- **Decision Trees:** recursive splits to maximize purity (classification) or reduce variance (regression).
+**Interpretation:**
+- Small $k$ → low bias, high variance (can overfit).  
+- Large $k$ → higher bias, lower variance (can underfit).  
+- Sensitive to scale — **standardize** features.
 
-## Code: kNN & Decision Tree (classification)
+## DecisionTreeRegressor
+**Prediction method:** Mean of training targets in the terminal (leaf) node reached by the input. (`DecisionTreeRegressor.predict`)
+
+**Interpretation:**
+- Splits partition feature space; easy to visualize rules (“if-else” structure).
+- Deep trees can **overfit**; control with `max_depth`(limits tree growth), `min_samples_leaf`/ `min_samples_split` (control minimum data per split/leaf), etc.
+- Feature importance gives relative split usefulness (caution: biased toward high-cardinality).
+
+## Code: kNN 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.tree import DecisionTreeRegressor
 
-knn = KNeighborsRegressor(n_neighbors=5)
-tree = DecisionTreeRegressor(max_depth=4, random_state=42)
 
-for model in [knn, tree]:
-    model.fit(X_train, y_train)
-    print(model.__class__.__name__, model.score(X_test, y_test))
+knn = Pipeline([("sc", StandardScaler()), ("knn", KNeighborsRegressor(n_neighbors=5))])
+knn.fit(X_tr, y_tr)
+print("kNN RMSE:", mean_squared_error(y_te, knn.predict(X_te), squared=False))
 ```
 
-## Takeaways
+## Code: Decision Tree (regression)
+```python
+from sklearn.tree import DecisionTreeRegressor
 
-- kNN: simple, no training, but slow for large data.
 
-- Trees: easy to interpret but prone to overfitting.
-
-- Tune k, max_depth, min_samples_leaf
+best = None
+best_rmse = float("inf")
+for d in range(1, 11):
+tree = DecisionTreeRegressor(max_depth=d, random_state=42).fit(X_tr, y_tr)
+rmse = mean_squared_error(y_te, tree.predict(X_te), squared=False)
+if rmse < best_rmse:
+best_rmse, best = rmse, tree
+print({"best_depth": best.get_params()["max_depth"], "RMSE": best_rmse})
+```
 
 # Chapter 16 — Introduction to Classification (Logistic Regression)
 
-## Concepts
-- Predicting categories instead of numeric outcomes.
+## Logistic Regression (binary)
+ntuition
 
-- Output is a probability between 0 and 1.
+Logistic regression models probability using the sigmoid (logit) transformation: 
+$$P(y = 1 |X) = \frac{1}{1 + e^{X\beta}}$$
 
-- Decision boundary defined by 0.5 threshold (can be adjusted).
+Linear in log-odds: $\log\frac{p}{1-p} = X\beta$
 
-- Metrics: Accuracy, Precision, Recall, F1, ROC-AUC.
+Coefficients ($\beta$) represent the log change in odds for one-unit change in the predictor.
+**Prediction methods:**
+- `predict_proba(X)[:,1]` → estimated $P(y=1\mid X)$ via sigmoid of linear score.
+- `decision_function(X)` → raw log-odds score.
+- `predict(X)` → class label using threshold 0.5 by default (can adjust).
 
-## Math
-- Logistic model: $P(y=1|x)=\sigma(w^\top x+b)=\frac{1}{1+e^{-(w^\top x+b)}}$.
-
-- Estimate by maximizing log-likelihood (equivalently minimizing cross-entropy).
+**Interpretation:**
+- Coefficients are in **log-odds** units: a one-unit increase in $x_j$ changes $\log\frac{p}{1-p}$ by $\beta_j$, holding other features constant.  
+- $\exp(\beta_j)$ gives the **odds ratio** (multiplicative change in odds for one-unit increase in $x_j$).  
+- Standardization helps if features have very different scales.
 
 ## Code: binary classification template
 ```python
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 
 logit = LogisticRegression(max_iter=1000)
 logit.fit(X_train, y_train)
 preds = logit.predict(X_test)
+probs = logit.predict_proba(X_test)[:,1]
 
 print(confusion_matrix(y_test, preds))
 print(classification_report(y_test, preds))
+print("ROC-AUC:", roc_auc_score(y_test, probs))
 ```
 
-## Takeaways
+## Interpretation Example
 
-- Use logistic regression for binary outcomes.
+If $\beta_j = 0.7$, then $e^{0.7} \approx 2.01$ → the odds of the event double for each unit increase in $x_j$.
 
-- Evaluate beyond accuracy — look at F1 and ROC-AUC.
+# Chapter 17 — Linear Classifiers: LDA, QDA, SVM/SVC
 
-## Interpretations
+## LDA (Linear Discriminant Analysis)
+Assumes class-conditional normal distributions with equal covariances → linear decision boundaries.
 
-Precision: correctness of positive predictions.
+- Great for interpretability.
+- Performs well on small datasets with linear separability.
 
-Recall: completeness — did we catch all positives?
+**Prediction methods:**
+- `predict(X)` → class with highest posterior.
+- `predict_proba(X)` → class posterior probabilities under Gaussian class-conditional model with **shared covariance**.
 
-F1-score: harmonic mean of precision & recall.
+**Interpretation:**
+- Linear decision boundaries. Works well when classes are approximately normal with equal covariance matrices.
+- Also provides linear discriminant directions for visualization/dimension reduction.
 
-ROC-AUC: measures ranking quality; higher = better separation.
+## QDA (Quadratic Discriminant Analysis)
+Allows different covariance per class → quadratic boundaries.
 
-Adjust thresholds based on cost of false positives/negatives.
+- More flexible, higher variance.
+- Needs larger sample sizes to estimate covariances.
 
-# Chapter 17 — Linear Classifiers: LDA/QDA, Linear SVM
+**Prediction methods:**
+- `predict(X)`, `predict_proba(X)` similar to LDA but with **class-specific covariance**.
+**Interpretation:**
+- Quadratic boundaries; more flexible but higher variance—needs more data.
 
-## Concepts
-- LDA: assumes equal covariance for all classes.
+## SVM / SVC (support vector machines)
+Finds hyperplane maximizing margin between classes.
+**Terminology:**
+- In sklearn, **`SVC`** is the classifier; **`SVR`** is the regressor. “SVM” refers to the general method.
 
-- QDA: allows class-specific covariance.
+**Prediction methods (SVC):**
+- `predict(X)` → class label based on which side of the hyperplane you fall.
+- `decision_function(X)` → signed distance to the separating surface (margin score).
+- `predict_proba(X)` → probabilities **only if** `probability=True` (uses Platt scaling; slower).
 
-- SVM: finds the hyperplane with maximum margin.
+**Interpretation:**
+- Finds the hyperplane with **maximum margin** between classes (linear kernel).  
+- Kernels (e.g., RBF) create non-linear boundaries in original space.  
+- **C** controls margin/penalty tradeoff (large C → less regularization → fit training better but risk overfitting).  
+- **gamma** (RBF) controls influence of points (large gamma → tighter, wigglier boundary).  
+- Standardization strongly recommended.
 
-## Code
+## Linear SVM
+- Use `SVC(kernel="linear")` or `LinearSVC` (the latter uses a different solver and hinge loss; no `predict_proba`).
+
+## Code: LDA, QDA, SVC
 ```python
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.svm import SVC
 
 lda = LinearDiscriminantAnalysis()
 qda = QuadraticDiscriminantAnalysis()
-svm = SVC(kernel='linear', C=1.0)
+svc = SVC(kernel='linear', C=1.0, probability=True)
 
-for model in [lda, qda, svm]:
+for model in [lda, qda, svc]:
     model.fit(X_train, y_train)
-    print(model.__class__.__name__, model.score(X_test, y_test))
+    print(model.__class__.__name__, "Test Accuracy:", model.score(X_test, y_test))
 ```
-::: {.callout-note}
-LDA/QDA: good for small, clean datasets.
 
-SVM: powerful for high-dimensional data.
-:::
-
+## Code: RBF SVM with C/gamma grid
+```python
+param_grid = {"C": [0.1, 1, 10], "gamma": [0.01, 0.1, 1]}
+rbf = SVC(kernel="rbf", probability=True)
+svm_search = GridSearchCV(rbf, param_grid, cv=3, scoring="roc_auc")
+svm_search.fit(X, y)
+print(svm_search.best_params_, svm_search.best_score_)
+```
 
 # Chapter 18 — Multiclass Classification
 
-## Concepts
-- Extend binary classifiers using:
+## Strategies
+- **One-vs-Rest (OvR):** Train one binary classifier per class vs all others. Most linear models in sklearn use OvR by default.
+- **One-vs-One (OvO):** Train a classifier for each pair of classes; prediction via voting (commonly used by SVC).
+- **Multinomial (native):** Some models (e.g., `LogisticRegression(multi_class="multinomial", solver="lbfgs")`) directly optimize for multiclass.
 
-        - One-vs-Rest (OvR): 1 model per class.
+## Metrics
+- **Accuracy** can be misleading under imbalance. Prefer **macro-averaged** precision/recall/F1 to weight classes equally; **micro** aggregates across all instances.
+- **Confusion matrix** generalizes to multiclass to see per-class errors.
 
-        - One-vs-One (OvO): 1 model per class pair.
-
-- Evaluation metrics:
-
-        - Micro average: aggregate globally.
-
-        - Macro average: mean across classes.
-
-## Code: multinomial vs OvR vs OvO
+## Code: multinomial vs OvR vs OvO (example)
 ```python
-from sklearn.multiclass import OneVsRestClassifier
+from sklearn.multiclass import OneVsRestClassifier, OneVsOneClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 from sklearn.metrics import f1_score
 
-ovr = OneVsRestClassifier(LogisticRegression(max_iter=5000))
-ovr.fit(X_train, y_train)
-pred = ovr.predict(X_test)
+ovr_log = OneVsRestClassifier(LogisticRegression(max_iter=5000))
+ovo_svc = OneVsOneClassifier(SVC(kernel="linear"))
 
-print("Macro F1:", f1_score(y_test, pred, average='macro'))
+for clf in [ovr_log, ovo_svc]:
+    clf.fit(X_train, y_train)
+    pred = clf.predict(X_test)
+    print(clf.__class__.__name__, "Macro F1:", f1_score(y_test, pred, average='macro'))
 ```
-# Takeaways
 
-Most sklearn classifiers automatically handle multiclass.
+# ROC, AUC, F1, and Loss Functions
 
-Use macro-F1 for class imbalance.
+## ROC & AUC
+- **ROC curve:** plots True Positive Rate (TPR/Recall) vs False Positive Rate (FPR) as threshold varies.
+- **AUC:** area under ROC; probability a random positive ranks above a random negative. Threshold-independent.
+  - AUC = 0.5: random guessing.
+  - AUC = 1.0: perfect separation.
+  - AUC = 0.7-0.9: good model.
+- Use model **scores** (`predict_proba` or `decision_function`) to compute ROC/AUC.
 
-Logistic regression + OvR works well as a baseline.
 
-
-# Miscellaneous
-## Dummyfy
 
 ```python
+from sklearn.metrics import roc_curve, roc_auc_score
 
-# pandas
+scores = clf.decision_function(X_test)  # or predict_proba(X_test)[:,1]
+fpr, tpr, thr = roc_curve(y_test, scores)
+auc = roc_auc_score(y_test, scores)
+print("AUC:", auc)
+
+roc_df = pd.DataFrame({"FPR": fpr, "TPR": tpr})
+(
+ggplot(roc_df, aes("FPR", "TPR"))
++ geom_line()
++ geom_abline(slope=1, intercept=0, linetype="dashed")
++ labs(title="ROC Curve", x="FPR", y="TPR")
++ theme_minimal()
+)
+```
+## Business Interpretation
+Choosing threshold = balancing costs. Example: In fraud detection, prefer high recall even if precision drops slightly.
+
+## Precision, Recall, F1
+- **Precision:** $\text{TP} / (\text{TP} + \text{FP})$
+- **Recall (TPR):** $\text{TP} / (\text{TP} + \text{FN})$
+- **F1:** harmonic mean of precision & recall  
+  $$F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+### Precision vs Recall Tradeoff
+- High precision = fewer false positives.
+- High recall = fewer false negatives.
+- F1-score balances both; useful when both errors matter.
+
+## Common loss functions
+- **Regression:** MSE (squared loss), MAE (absolute loss).
+- **Logistic regression / probabilistic classifiers:** **Log loss** (cross-entropy), minimized by correct calibrated probabilities.
+- **Linear SVM (`LinearSVC`):** **Hinge loss**; margin violations are penalized linearly (with regularization via C).
+
+# Miscellaneous
+
+## Pipeline snippets
+```python
+from sklearn.compose import ColumnTransformer, make_column_selector as selector
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LinearRegression
+
+num = selector(dtype_include="number")
+cat = selector(dtype_include="object")
+
+pre = ColumnTransformer([
+    ("cat", OneHotEncoder(drop='first', handle_unknown='ignore'), cat),
+    ("num", StandardScaler(), num)
+])
+
+pipe = Pipeline([("prep", pre), ("model", LinearRegression())])
+pipe.fit(X_train, y_train)
+pipe.score(X_test, y_test)
+```
+
+## Dummyfy (One-Hot Encoding)
+```python
+# pandas (quick-and-dirty)
 X_dum = pd.get_dummies(X, drop_first=True)
 
-# sklearn in ColumnTransformer (recommended)
-ct = ColumnTransformer([("cat", OneHotEncoder(sparse_output=False, handle_unknown='ignore'), cat_cols)],
-                       remainder='passthrough')
+# sklearn (recommended for pipelines)
+ct = ColumnTransformer([
+    ("cat", OneHotEncoder(sparse_output=False, handle_unknown='ignore'), cat_cols)
+], remainder='passthrough')
+```
 
+## Standardize
+```python
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_train)  # fit only on train
+X_te_scaled = scaler.transform(X_test)    # transform test with same params
 ```
