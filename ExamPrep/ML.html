@@ -2329,65 +2329,104 @@ window.Quarto = {
   <li><a href="#chapter-10-introduction-to-predictive-modeling" id="toc-chapter-10-introduction-to-predictive-modeling" class="nav-link active" data-scroll-target="#chapter-10-introduction-to-predictive-modeling">Chapter 10 — Introduction to Predictive Modeling</a>
   <ul class="collapse">
   <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">Concepts</a></li>
+  <li><a href="#key-workflow" id="toc-key-workflow" class="nav-link" data-scroll-target="#key-workflow">Key workflow</a></li>
   <li><a href="#generalized-code" id="toc-generalized-code" class="nav-link" data-scroll-target="#generalized-code">Generalized code</a></li>
   <li><a href="#things-to-remember" id="toc-things-to-remember" class="nav-link" data-scroll-target="#things-to-remember">Things to remember</a></li>
-  <li><a href="#interpretations-and-key-insights" id="toc-interpretations-and-key-insights" class="nav-link" data-scroll-target="#interpretations-and-key-insights">Interpretations and key Insights</a></li>
+  <li><a href="#interpretations-and-key-insights" id="toc-interpretations-and-key-insights" class="nav-link" data-scroll-target="#interpretations-and-key-insights">Interpretations and key Insights</a>
+  <ul class="collapse">
+  <li><a href="#r2-coefficient-of-determination" id="toc-r2-coefficient-of-determination" class="nav-link" data-scroll-target="#r2-coefficient-of-determination"><span class="math inline">\(R^2\)</span> (Coefficient of Determination)</a></li>
+  <li><a href="#rmse-root-mean-squared-error" id="toc-rmse-root-mean-squared-error" class="nav-link" data-scroll-target="#rmse-root-mean-squared-error">RMSE (Root Mean Squared Error)</a></li>
+  </ul></li>
+  <li><a href="#generalization-sanity-checks" id="toc-generalization-sanity-checks" class="nav-link" data-scroll-target="#generalization-sanity-checks">Generalization &amp; Sanity Checks</a></li>
   </ul></li>
   <li><a href="#chapter-11-multiple-linear-regression-mlr-polynomials" id="toc-chapter-11-multiple-linear-regression-mlr-polynomials" class="nav-link" data-scroll-target="#chapter-11-multiple-linear-regression-mlr-polynomials">Chapter 11 — Multiple Linear Regression (MLR) &amp; Polynomials</a>
   <ul class="collapse">
   <li><a href="#concepts-1" id="toc-concepts-1" class="nav-link" data-scroll-target="#concepts-1">Concepts</a></li>
-  <li><a href="#generalized-code-mlr" id="toc-generalized-code-mlr" class="nav-link" data-scroll-target="#generalized-code-mlr">Generalized code: MLR</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
-  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#generalized-code-mlr-with-preprocessing-pipeline" id="toc-generalized-code-mlr-with-preprocessing-pipeline" class="nav-link" data-scroll-target="#generalized-code-mlr-with-preprocessing-pipeline">Generalized code: MLR with preprocessing pipeline</a></li>
+  <li><a href="#generalized-code-add-polynomial-features-to-selected-numeric-columns" id="toc-generalized-code-add-polynomial-features-to-selected-numeric-columns" class="nav-link" data-scroll-target="#generalized-code-add-polynomial-features-to-selected-numeric-columns">Generalized code: Add polynomial features to selected numeric columns</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients">Coefficients</a></li>
+  <li><a href="#scaling-and-interpretation" id="toc-scaling-and-interpretation" class="nav-link" data-scroll-target="#scaling-and-interpretation">Scaling and Interpretation</a></li>
+  <li><a href="#polynomial-features" id="toc-polynomial-features" class="nav-link" data-scroll-target="#polynomial-features">Polynomial Features</a></li>
+  <li><a href="#residual-analysis" id="toc-residual-analysis" class="nav-link" data-scroll-target="#residual-analysis">Residual Analysis</a></li>
+  </ul></li>
   <li><a href="#interaction-terms" id="toc-interaction-terms" class="nav-link" data-scroll-target="#interaction-terms">Interaction terms</a></li>
+  <li><a href="#generic-code-interaction-terms-among-numeric-variables-only" id="toc-generic-code-interaction-terms-among-numeric-variables-only" class="nav-link" data-scroll-target="#generic-code-interaction-terms-among-numeric-variables-only">Generic Code: Interaction terms among numeric variables only</a></li>
+  <li><a href="#generic-code-selected-columns" id="toc-generic-code-selected-columns" class="nav-link" data-scroll-target="#generic-code-selected-columns">Generic code: Selected columns</a></li>
   </ul></li>
   <li><a href="#chapter-12-model-validation" id="toc-chapter-12-model-validation" class="nav-link" data-scroll-target="#chapter-12-model-validation">Chapter 12 — Model Validation</a>
   <ul class="collapse">
   <li><a href="#concepts-2" id="toc-concepts-2" class="nav-link" data-scroll-target="#concepts-2">Concepts</a></li>
-  <li><a href="#code-quick-validation" id="toc-code-quick-validation" class="nav-link" data-scroll-target="#code-quick-validation">Code: quick validation</a></li>
-  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1">Interpretation</a></li>
+  <li><a href="#generalized-code-1" id="toc-generalized-code-1" class="nav-link" data-scroll-target="#generalized-code-1">Generalized code</a></li>
+  <li><a href="#underfitting-vs-overfitting-how-to-see-it-in-outputs" id="toc-underfitting-vs-overfitting-how-to-see-it-in-outputs" class="nav-link" data-scroll-target="#underfitting-vs-overfitting-how-to-see-it-in-outputs">Underfitting vs Overfitting — how to see it in outputs</a>
+  <ul class="collapse">
+  <li><a href="#overfitting-example" id="toc-overfitting-example" class="nav-link" data-scroll-target="#overfitting-example">Overfitting Example</a></li>
+  <li><a href="#underfitting-example" id="toc-underfitting-example" class="nav-link" data-scroll-target="#underfitting-example">Underfitting Example</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">Cross-Validation</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#chapter-13-pipelines-cross-validation-hyperparameter-tuning" id="toc-chapter-13-pipelines-cross-validation-hyperparameter-tuning" class="nav-link" data-scroll-target="#chapter-13-pipelines-cross-validation-hyperparameter-tuning">Chapter 13 — Pipelines, Cross-Validation, Hyperparameter Tuning</a>
   <ul class="collapse">
-  <li><a href="#concepts-3" id="toc-concepts-3" class="nav-link" data-scroll-target="#concepts-3">Concepts</a></li>
-  <li><a href="#code-pipeline-cv-grid-search" id="toc-code-pipeline-cv-grid-search" class="nav-link" data-scroll-target="#code-pipeline-cv-grid-search">Code: pipeline + CV + grid search</a></li>
-  <li><a href="#takeaways-1" id="toc-takeaways-1" class="nav-link" data-scroll-target="#takeaways-1">Takeaways</a></li>
-  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2">Interpretation</a></li>
+  <li><a href="#pipeline-all-steps-explained" id="toc-pipeline-all-steps-explained" class="nav-link" data-scroll-target="#pipeline-all-steps-explained">Pipeline (all steps explained)</a>
+  <ul class="collapse">
+  <li><a href="#why-pipelines" id="toc-why-pipelines" class="nav-link" data-scroll-target="#why-pipelines">Why pipelines?</a></li>
+  </ul></li>
+  <li><a href="#dummyfying-explanation" id="toc-dummyfying-explanation" class="nav-link" data-scroll-target="#dummyfying-explanation">Dummyfying — explanation</a></li>
+  <li><a href="#standardize-explanation" id="toc-standardize-explanation" class="nav-link" data-scroll-target="#standardize-explanation">Standardize — explanation</a></li>
+  <li><a href="#cross-validation-cv" id="toc-cross-validation-cv" class="nav-link" data-scroll-target="#cross-validation-cv">Cross-Validation (CV)</a></li>
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1">Interpretation</a></li>
   </ul></li>
   <li><a href="#chapter-14-penalized-regression-ridge-lasso-elastic-net" id="toc-chapter-14-penalized-regression-ridge-lasso-elastic-net" class="nav-link" data-scroll-target="#chapter-14-penalized-regression-ridge-lasso-elastic-net">Chapter 14 — Penalized Regression (Ridge, Lasso, Elastic Net)</a>
   <ul class="collapse">
   <li><a href="#math" id="toc-math" class="nav-link" data-scroll-target="#math">Math</a></li>
   <li><a href="#code-quick-comparison" id="toc-code-quick-comparison" class="nav-link" data-scroll-target="#code-quick-comparison">Code: quick comparison</a></li>
-  <li><a href="#takeaways-2" id="toc-takeaways-2" class="nav-link" data-scroll-target="#takeaways-2">Takeaways</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2">Interpretation</a></li>
   </ul></li>
   <li><a href="#chapter-15-nonparametric-methods-knn-trees" id="toc-chapter-15-nonparametric-methods-knn-trees" class="nav-link" data-scroll-target="#chapter-15-nonparametric-methods-knn-trees">Chapter 15 — Nonparametric Methods: kNN &amp; Trees</a>
   <ul class="collapse">
-  <li><a href="#concepts-4" id="toc-concepts-4" class="nav-link" data-scroll-target="#concepts-4">Concepts</a></li>
-  <li><a href="#code-knn-decision-tree-classification" id="toc-code-knn-decision-tree-classification" class="nav-link" data-scroll-target="#code-knn-decision-tree-classification">Code: kNN &amp; Decision Tree (classification)</a></li>
-  <li><a href="#takeaways-3" id="toc-takeaways-3" class="nav-link" data-scroll-target="#takeaways-3">Takeaways</a></li>
+  <li><a href="#knn-regression-classification" id="toc-knn-regression-classification" class="nav-link" data-scroll-target="#knn-regression-classification">kNN (regression &amp; classification)</a></li>
+  <li><a href="#decisiontreeregressor" id="toc-decisiontreeregressor" class="nav-link" data-scroll-target="#decisiontreeregressor">DecisionTreeRegressor</a></li>
+  <li><a href="#code-knn" id="toc-code-knn" class="nav-link" data-scroll-target="#code-knn">Code: kNN</a></li>
+  <li><a href="#code-decision-tree-regression" id="toc-code-decision-tree-regression" class="nav-link" data-scroll-target="#code-decision-tree-regression">Code: Decision Tree (regression)</a></li>
   </ul></li>
   <li><a href="#chapter-16-introduction-to-classification-logistic-regression" id="toc-chapter-16-introduction-to-classification-logistic-regression" class="nav-link" data-scroll-target="#chapter-16-introduction-to-classification-logistic-regression">Chapter 16 — Introduction to Classification (Logistic Regression)</a>
   <ul class="collapse">
-  <li><a href="#concepts-5" id="toc-concepts-5" class="nav-link" data-scroll-target="#concepts-5">Concepts</a></li>
-  <li><a href="#math-1" id="toc-math-1" class="nav-link" data-scroll-target="#math-1">Math</a></li>
+  <li><a href="#logistic-regression-binary" id="toc-logistic-regression-binary" class="nav-link" data-scroll-target="#logistic-regression-binary">Logistic Regression (binary)</a></li>
   <li><a href="#code-binary-classification-template" id="toc-code-binary-classification-template" class="nav-link" data-scroll-target="#code-binary-classification-template">Code: binary classification template</a></li>
-  <li><a href="#takeaways-4" id="toc-takeaways-4" class="nav-link" data-scroll-target="#takeaways-4">Takeaways</a></li>
-  <li><a href="#interpretations" id="toc-interpretations" class="nav-link" data-scroll-target="#interpretations">Interpretations</a></li>
+  <li><a href="#interpretation-example" id="toc-interpretation-example" class="nav-link" data-scroll-target="#interpretation-example">Interpretation Example</a></li>
   </ul></li>
-  <li><a href="#chapter-17-linear-classifiers-ldaqda-linear-svm" id="toc-chapter-17-linear-classifiers-ldaqda-linear-svm" class="nav-link" data-scroll-target="#chapter-17-linear-classifiers-ldaqda-linear-svm">Chapter 17 — Linear Classifiers: LDA/QDA, Linear SVM</a>
+  <li><a href="#chapter-17-linear-classifiers-lda-qda-svmsvc" id="toc-chapter-17-linear-classifiers-lda-qda-svmsvc" class="nav-link" data-scroll-target="#chapter-17-linear-classifiers-lda-qda-svmsvc">Chapter 17 — Linear Classifiers: LDA, QDA, SVM/SVC</a>
   <ul class="collapse">
-  <li><a href="#concepts-6" id="toc-concepts-6" class="nav-link" data-scroll-target="#concepts-6">Concepts</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#lda-linear-discriminant-analysis" id="toc-lda-linear-discriminant-analysis" class="nav-link" data-scroll-target="#lda-linear-discriminant-analysis">LDA (Linear Discriminant Analysis)</a></li>
+  <li><a href="#qda-quadratic-discriminant-analysis" id="toc-qda-quadratic-discriminant-analysis" class="nav-link" data-scroll-target="#qda-quadratic-discriminant-analysis">QDA (Quadratic Discriminant Analysis)</a></li>
+  <li><a href="#svm-svc-support-vector-machines" id="toc-svm-svc-support-vector-machines" class="nav-link" data-scroll-target="#svm-svc-support-vector-machines">SVM / SVC (support vector machines)</a></li>
+  <li><a href="#linear-svm" id="toc-linear-svm" class="nav-link" data-scroll-target="#linear-svm">Linear SVM</a></li>
+  <li><a href="#code-lda-qda-svc" id="toc-code-lda-qda-svc" class="nav-link" data-scroll-target="#code-lda-qda-svc">Code: LDA, QDA, SVC</a></li>
+  <li><a href="#code-rbf-svm-with-cgamma-grid" id="toc-code-rbf-svm-with-cgamma-grid" class="nav-link" data-scroll-target="#code-rbf-svm-with-cgamma-grid">Code: RBF SVM with C/gamma grid</a></li>
   </ul></li>
   <li><a href="#chapter-18-multiclass-classification" id="toc-chapter-18-multiclass-classification" class="nav-link" data-scroll-target="#chapter-18-multiclass-classification">Chapter 18 — Multiclass Classification</a>
   <ul class="collapse">
-  <li><a href="#concepts-7" id="toc-concepts-7" class="nav-link" data-scroll-target="#concepts-7">Concepts</a></li>
-  <li><a href="#code-multinomial-vs-ovr-vs-ovo" id="toc-code-multinomial-vs-ovr-vs-ovo" class="nav-link" data-scroll-target="#code-multinomial-vs-ovr-vs-ovo">Code: multinomial vs OvR vs OvO</a></li>
+  <li><a href="#strategies" id="toc-strategies" class="nav-link" data-scroll-target="#strategies">Strategies</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">Metrics</a></li>
+  <li><a href="#code-multinomial-vs-ovr-vs-ovo-example" id="toc-code-multinomial-vs-ovr-vs-ovo-example" class="nav-link" data-scroll-target="#code-multinomial-vs-ovr-vs-ovo-example">Code: multinomial vs OvR vs OvO (example)</a></li>
   </ul></li>
-  <li><a href="#takeaways-5" id="toc-takeaways-5" class="nav-link" data-scroll-target="#takeaways-5">Takeaways</a></li>
+  <li><a href="#roc-auc-f1-and-loss-functions" id="toc-roc-auc-f1-and-loss-functions" class="nav-link" data-scroll-target="#roc-auc-f1-and-loss-functions">ROC, AUC, F1, and Loss Functions</a>
+  <ul class="collapse">
+  <li><a href="#roc-auc" id="toc-roc-auc" class="nav-link" data-scroll-target="#roc-auc">ROC &amp; AUC</a></li>
+  <li><a href="#business-interpretation" id="toc-business-interpretation" class="nav-link" data-scroll-target="#business-interpretation">Business Interpretation</a></li>
+  <li><a href="#precision-recall-f1" id="toc-precision-recall-f1" class="nav-link" data-scroll-target="#precision-recall-f1">Precision, Recall, F1</a>
+  <ul class="collapse">
+  <li><a href="#precision-vs-recall-tradeoff" id="toc-precision-vs-recall-tradeoff" class="nav-link" data-scroll-target="#precision-vs-recall-tradeoff">Precision vs Recall Tradeoff</a></li>
+  </ul></li>
+  <li><a href="#common-loss-functions" id="toc-common-loss-functions" class="nav-link" data-scroll-target="#common-loss-functions">Common loss functions</a></li>
+  </ul></li>
   <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a>
   <ul class="collapse">
-  <li><a href="#dummyfy" id="toc-dummyfy" class="nav-link" data-scroll-target="#dummyfy">Dummyfy</a></li>
+  <li><a href="#pipeline-snippets" id="toc-pipeline-snippets" class="nav-link" data-scroll-target="#pipeline-snippets">Pipeline snippets</a></li>
+  <li><a href="#dummyfy-one-hot-encoding" id="toc-dummyfy-one-hot-encoding" class="nav-link" data-scroll-target="#dummyfy-one-hot-encoding">Dummyfy (One-Hot Encoding)</a></li>
+  <li><a href="#standardize" id="toc-standardize" class="nav-link" data-scroll-target="#standardize">Standardize</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2423,61 +2462,82 @@ window.Quarto = {
 <h1>Chapter 10 — Introduction to Predictive Modeling</h1>
 <section id="concepts" class="level2">
 <h2 class="anchored" data-anchor-id="concepts">Concepts</h2>
-<ul>
-<li><p>Predictive modeling maps features <span class="math inline">\(X\)</span> to a target <span class="math inline">\(y\)</span>. We evaluate generalization on <strong>unseen data</strong>.</p></li>
-<li><p>Predictors (X): Input variables/features.</p></li>
-<li><p>Target (y): What we’re trying to predict.</p></li>
-<li><p>Model: A mathematical relationship between X and y.</p></li>
-<li><p>Training vs Testing data:</p>
-<pre><code>  - Train on one subset.
-
-  - Test (evaluate) on another — simulates new, unseen data.</code></pre></li>
-<li><p>Workflow (sklearn-style): <strong>split → preprocess → fit → predict → evaluate</strong>.</p></li>
-</ul>
+<p>Predictive modeling aims to learn a mapping from input features (<span class="math inline">\(X\)</span>) to an outcome (<span class="math inline">\(y\)</span>) using data. The fundamental goal is to generalize — i.e., perform well on unseen data rather than memorizing patterns in the training set.</p>
+<p>Predictors (X): Input variables or features that describe each observation. These could be numeric (e.g., income, age) or categorical (e.g., gender, city).</p>
+<p>Target (y): The outcome variable you want to predict. For regression tasks, this is continuous (e.g., price); for classification, categorical (e.g., yes/no).</p>
+<p>Model: A mathematical function that approximates how <span class="math inline">\(X\)</span> influences <span class="math inline">\(y\)</span>. Examples include linear regression, decision trees, and neural networks.</p>
+<p>Training vs Testing:</p>
+<p>Training data: Used to fit (learn) the model parameters.</p>
+<p>Testing data: Used to evaluate generalization performance — how well the model predicts unseen data.</p>
+</section>
+<section id="key-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="key-workflow">Key workflow</h2>
+<p>In modern machine learning (e.g., scikit-learn), the process is typically:</p>
+<p>split → preprocess → fit → predict → evaluate</p>
+<p>This structure ensures a consistent, reproducible workflow where preprocessing and modeling steps can be combined into pipelines.</p>
 </section>
 <section id="generalized-code" class="level2">
 <h2 class="anchored" data-anchor-id="generalized-code">Generalized code</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;your_data.csv&quot;</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">&quot;target&quot;</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">&quot;target&quot;</span>])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">&quot;target&quot;</span>]</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">&quot;feature_1&quot;</span>, <span class="st">&quot;feature_2&quot;</span>, ..., <span class="st">&quot;feature_n&quot;</span>]]</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>X_tr, X_te, y_tr, y_te <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> LinearRegression()</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>m.fit(X_tr, y_tr)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> m.predict(X_te)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RMSE:&quot;</span>, sqrt(mean_squared_error(y_te, pred)))</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;R2:&quot;</span>, r2_score(y_te, pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;your_data.csv&quot;</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">&quot;target&quot;</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">&quot;target&quot;</span>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># or manually select</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># y = df[&quot;target&quot;]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># X = df[[&quot;feature_1&quot;, &quot;feature_2&quot;, ..., &quot;feature_n&quot;]]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>X_tr, X_te, y_tr, y_te <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> LinearRegression()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>m.fit(X_tr, y_tr)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> m.predict(X_te)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RMSE:&quot;</span>, sqrt(mean_squared_error(y_te, pred)))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># rmse = mean_squared_error(y_te, y_pred, squared=False)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;R2:&quot;</span>, r2_score(y_te, pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="things-to-remember" class="level2">
 <h2 class="anchored" data-anchor-id="things-to-remember">Things to remember</h2>
 <ul>
-<li><p>Always split data before fitting.</p></li>
-<li><p>Metrics:</p>
-<pre><code>  - R²: variance explained.
-
-  - RMSE: average prediction error.</code></pre></li>
-<li><p>Never evaluate only on the training set!</p></li>
+<li>Always split data before fitting.</li>
+<li>Metrics:
+<ul>
+<li>R²: variance explained.</li>
+<li>RMSE: average prediction error.</li>
+</ul></li>
+<li>Never evaluate only on the training set!</li>
 </ul>
 </section>
 <section id="interpretations-and-key-insights" class="level2">
 <h2 class="anchored" data-anchor-id="interpretations-and-key-insights">Interpretations and key Insights</h2>
-<p><span class="math inline">\(R^2\)</span> (Coefficient of Determination): Measures how much variance in <span class="math inline">\(y\)</span> is explained by <span class="math inline">\(X\)</span> (closer to 1 = better).</p>
-<p>RMSE (Root Mean Squared Error): Measures the typical prediction error magnitude (same units as y).</p>
-<p>Always evaluate on test data — performance on training data often looks deceptively good (overfitting).</p>
-<p>Sanity check: A model performing worse than predicting the mean of y is a red flag.</p>
+<section id="r2-coefficient-of-determination" class="level3">
+<h3 class="anchored" data-anchor-id="r2-coefficient-of-determination"><span class="math inline">\(R^2\)</span> (Coefficient of Determination)</h3>
+<p>Represents the proportion of variance in the target variable that the model explains. Mathematically:</p>
+<p><span class="math display">\[R^2 = 1 - \frac{\text{SS}{res}}{\text{SS}{tot}}\]</span></p>
+<p>where <span class="math inline">\(\text{SS}{res}\)</span> is the residual sum of squares and <span class="math inline">\(\text{SS}{tot}\)</span> is the total sum of squares.</p>
+<p><span class="math inline">\(R^2 = 1\)</span> → perfect predictions.</p>
+<p><span class="math inline">\(R^2 = 0\)</span> → model is no better than predicting the mean.</p>
+<p><span class="math inline">\(R^2 &lt; 0\)</span> → model is worse than predicting the mean.</p>
+<p>Interpret with caution: high <span class="math inline">\(R^2\)</span> does not imply causation or correctness; it only reflects goodness-of-fit.</p>
+</section>
+<section id="rmse-root-mean-squared-error" class="level3">
+<h3 class="anchored" data-anchor-id="rmse-root-mean-squared-error">RMSE (Root Mean Squared Error)</h3>
+<p>Gives the average magnitude of error between predictions and true values, in the same units as <span class="math inline">\(y\)</span>. Lower RMSE = better predictive accuracy.</p>
+<p><span class="math display">\[RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2}\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of data points, <span class="math inline">\(y_i\)</span> are the true values, and <span class="math inline">\(\hat{y}_i\)</span> are the predicted values.</p>
+<p>RMSE penalizes large errors more than small ones because of the square term. Compare RMSE to the scale of <span class="math inline">\(y\)</span> to interpret practical significance.</p>
+</section>
+</section>
+<section id="generalization-sanity-checks" class="level2">
+<h2 class="anchored" data-anchor-id="generalization-sanity-checks">Generalization &amp; Sanity Checks</h2>
+<p>A model performing well on the training data but poorly on test data indicates overfitting.</p>
+<p>Always benchmark against a baseline (e.g., predicting the mean). If the model cannot outperform it, revisit feature selection or modeling approach.</p>
 </section>
 </section>
 <section id="chapter-11-multiple-linear-regression-mlr-polynomials" class="level1">
@@ -2485,198 +2545,260 @@ window.Quarto = {
 <section id="concepts-1" class="level2">
 <h2 class="anchored" data-anchor-id="concepts-1">Concepts</h2>
 <ul>
-<li><p><strong>MLR:</strong> <span class="math inline">\(\hat y = \beta_0 + \beta_1.x_1 + \beta_2.x_2 + \dots + \beta_n.x_n\)</span>.</p></li>
-<li><p>Handle <strong>categoricals</strong> (one-hot) &amp; <strong>scale</strong> numerics when needed.</p></li>
-<li><p>Each <span class="math inline">\(\beta_i\)</span> represents the marginal effect of <span class="math inline">\(x_i\)</span> on y, holding others constant.</p></li>
-<li><p>Polynomial features (e.g., <span class="math inline">\(x^2\)</span>) introduce nonlinearity while keeping the model linear in parameters.</p></li>
-<li><p>Works well when relationship between features and target is approximately linear.</p></li>
-<li><p>Issues: multicollinearity, overfitting, nonlinear patterns.</p></li>
+<li><strong>MLR:</strong> <span class="math inline">\(\hat y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n\)</span>.</li>
+<li>Each <span class="math inline">\(\beta_i\)</span> captures the marginal effect of <span class="math inline">\(x_i\)</span> on <span class="math inline">\(y\)</span>, holding all other features constant. MLR assumes:
+<ul>
+<li>Linearity – relationship between features and target is linear in parameters.</li>
+<li>Independence of observations.</li>
+</ul></li>
+<li>No multicollinearity among predictors.</li>
+<li>Homoscedasticity – constant variance of residuals.</li>
+<li>Normally distributed errors (for inference).</li>
+<li>Polynomial features introduce nonlinear patterns while keeping the model linear in coefficients.</li>
 </ul>
 </section>
-<section id="generalized-code-mlr" class="level2">
-<h2 class="anchored" data-anchor-id="generalized-code-mlr">Generalized code: MLR</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer, make_column_selector <span class="im">as</span> selector</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder, StandardScaler, PolynomialFeatures</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>num_sel <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;number&quot;</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>cat_sel <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>poly_cols <span class="op">=</span> [<span class="st">&quot;num_feature_1&quot;</span>]  <span class="co"># pick columns likely to be nonlinear</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>pre <span class="op">=</span> ColumnTransformer([</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;poly&quot;</span>, Pipeline([(<span class="st">&quot;poly&quot;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>)),</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                       (<span class="st">&quot;sc&quot;</span>, StandardScaler())]), poly_cols), <span class="co"># polynomials</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;num&quot;</span>, StandardScaler(), <span class="kw">lambda</span> X: [c <span class="cf">for</span> c <span class="kw">in</span> num_sel(X) <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> poly_cols]),</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;cat&quot;</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">&quot;ignore&quot;</span>, sparse_output<span class="op">=</span><span class="va">False</span>), cat_sel)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Pipeline([</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;prep&quot;</span>, pre), </span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;lm&quot;</span>, LinearRegression())</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>model.fit(X_tr, y_tr)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test R2:&quot;</span>, model.score(X_te, y_te))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="generalized-code-mlr-with-preprocessing-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-code-mlr-with-preprocessing-pipeline">Generalized code: MLR with preprocessing pipeline</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer, make_column_selector <span class="im">as</span> selector</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder, StandardScaler</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;number&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>cat <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pre <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;cat&quot;</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">&quot;ignore&quot;</span>), cat),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;num&quot;</span>, StandardScaler(), num)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> Pipeline([(<span class="st">&quot;prep&quot;</span>, pre), (<span class="st">&quot;model&quot;</span>, LinearRegression())])</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>pipe.fit(X_tr, y_tr)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test R2:&quot;</span>, pipe.score(X_te, y_te))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="generalized-code-add-polynomial-features-to-selected-numeric-columns" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-code-add-polynomial-features-to-selected-numeric-columns">Generalized code: Add polynomial features to selected numeric columns</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>poly_cols <span class="op">=</span> [<span class="st">&quot;num_feature_1&quot;</span>] <span class="co"># pick suspected nonlinear feature(s)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pre_poly <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;poly&quot;</span>, Pipeline([</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;poly&quot;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;sc&quot;</span>, StandardScaler())</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>]), poly_cols),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;num&quot;</span>, StandardScaler(), [c <span class="cf">for</span> c <span class="kw">in</span> X.columns <span class="cf">if</span> X[c].dtype <span class="op">!=</span> <span class="st">&quot;object&quot;</span> <span class="kw">and</span> c <span class="kw">not</span> <span class="kw">in</span> poly_cols]),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;cat&quot;</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">&quot;ignore&quot;</span>), [c <span class="cf">for</span> c <span class="kw">in</span> X.columns <span class="cf">if</span> X[c].dtype <span class="op">==</span> <span class="st">&quot;object&quot;</span>])</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>pipe_poly <span class="op">=</span> Pipeline([(<span class="st">&quot;prep&quot;</span>, pre_poly), (<span class="st">&quot;model&quot;</span>, LinearRegression())])</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>pipe_poly.fit(X_tr, y_tr)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test R2 (poly):&quot;</span>, pipe_poly.score(X_te, y_te))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<p>Compare linear vs. polynomial RMSE/R² on test data to check if added complexity helps.</p>
-<p>Examine residual plots — random scatter = good fit; patterns = missing relationships.</p>
-<p>Coefficient interpretation: In scaled models, compare importance via standardized coefficients.</p>
+<section id="coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="coefficients">Coefficients</h3>
+<p>Each coefficient <span class="math inline">\(\beta_i\)</span> measures how much <span class="math inline">\(y\)</span> changes for a one-unit increase in <span class="math inline">\(x_i\)</span>, holding other predictors constant. However, if predictors are correlated, coefficients can become unstable and difficult to interpret (multicollinearity).</p>
 </section>
-<section id="takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<section id="scaling-and-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-and-interpretation">Scaling and Interpretation</h3>
+<p>After scaling (StandardScaler), coefficients represent standardized effects (per 1 standard deviation change in <span class="math inline">\(x\)</span>). This allows for comparing variable importance across features.</p>
+</section>
+<section id="polynomial-features" class="level3">
+<h3 class="anchored" data-anchor-id="polynomial-features">Polynomial Features</h3>
+<p>Adding squared or higher-order terms lets the model capture curvature in the relationship:</p>
 <ul>
-<li><p>Feature engineering (like PolynomialFeatures) captures nonlinearity.</p></li>
-<li><p>Always scale numeric features before regression.</p></li>
-<li><p>Use pipelines for cleaner, reproducible workflows</p></li>
+<li>If the relationship between experience and salary is concave, a quadratic term (experience²) can model diminishing returns.</li>
+<li>Always validate whether added complexity reduces test error (not just train error).</li>
 </ul>
+</section>
+<section id="residual-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="residual-analysis">Residual Analysis</h3>
+<p>Plot residuals vs predicted values:</p>
+<ul>
+<li>Random scatter → model fits well.</li>
+<li>Patterns (e.g., curve or funnel shape) → nonlinearity or heteroskedasticity.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, geom_hline, labs, theme_minimal</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>resid <span class="op">=</span> y_te <span class="op">-</span> y_pred</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> pd.DataFrame({<span class="st">&quot;Predicted&quot;</span>: y_pred, <span class="st">&quot;Residuals&quot;</span>: resid})</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ggplot(plot_df, aes(<span class="st">&quot;Predicted&quot;</span>, <span class="st">&quot;Residuals&quot;</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> geom_point()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> geom_hline(yintercept<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> labs(title<span class="op">=</span><span class="st">&quot;Residuals vs Predicted&quot;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> theme_minimal()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="interaction-terms" class="level2">
 <h2 class="anchored" data-anchor-id="interaction-terms">Interaction terms</h2>
-<p>If your model has 2 predictors <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>: <span class="math display">\[y = \beta_0 + \beta_1.x_1 + \beta_2.x_2 + \beta_3.(x_1.x_2) + \epsilon\]</span></p>
-<p>The interaction term <span class="math inline">\((x_1.x_2)\)</span> measures how the relationship between <span class="math inline">\(x_1\)</span> and y changes depending on <span class="math inline">\(x_2\)</span>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<p>If your model has 2 predictors <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>: <span class="math display">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 x_2) + \epsilon\]</span></p>
+<p>A positive interaction (<span class="math inline">\(\beta_3 &gt; 0\)</span>) means the effect of <span class="math inline">\(x_1\)</span> increases with <span class="math inline">\(x_2\)</span>.</p>
+</section>
+<section id="generic-code-interaction-terms-among-numeric-variables-only" class="level2">
+<h2 class="anchored" data-anchor-id="generic-code-interaction-terms-among-numeric-variables-only">Generic Code: Interaction terms among numeric variables only</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppose you have numeric columns</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;income_x_age&quot;</span>] <span class="op">=</span> df[<span class="st">&quot;income&quot;</span>] <span class="op">*</span> df[<span class="st">&quot;age&quot;</span>]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;education_years&quot;</span>]]</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># degree=2 adds squared and pairwise interaction terms</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>, interaction_only<span class="op">=</span><span class="va">True</span>) <span class="co"># income*age, income*education_years</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>X_inter <span class="op">=</span> poly.fit_transform(X)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(poly.get_feature_names_out(X.columns))</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder, StandardScaler, PolynomialFeatures</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;sex&quot;</span>]]</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">&quot;spending&quot;</span>]</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Define transformations</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> [<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>]</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> [<span class="st">&quot;sex&quot;</span>]</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>pre <span class="op">=</span> ColumnTransformer([</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;num&quot;</span>, Pipeline([</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;scale&quot;</span>, StandardScaler()),</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;poly&quot;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>, interaction_only<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    ]), num_cols),</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;cat&quot;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&quot;first&quot;</span>), cat_cols)</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Pipeline([</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;prep&quot;</span>, pre),</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;lm&quot;</span>, LinearRegression())</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test R²:&quot;</span>, model.score(X_test, y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X.columns <span class="cf">if</span> X[c].dtype <span class="op">!=</span> <span class="st">&quot;object&quot;</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pre_int <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;num_int&quot;</span>, Pipeline([</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                (<span class="st">&quot;sc&quot;</span>, StandardScaler()),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                (<span class="st">&quot;poly&quot;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>, interaction_only<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        ]), num_cols),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;cat&quot;</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">&quot;ignore&quot;</span>), [c <span class="cf">for</span> c <span class="kw">in</span> X.columns <span class="cf">if</span> X[c].dtype <span class="op">==</span> <span class="st">&quot;object&quot;</span>])</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>pipe_int <span class="op">=</span> Pipeline([(<span class="st">&quot;prep&quot;</span>, pre_int), (<span class="st">&quot;model&quot;</span>, LinearRegression())])</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>pipe_int.fit(X_tr, y_tr)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test R2 (interactions):&quot;</span>, pipe_int.score(X_te, y_te))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="generic-code-selected-columns" class="level2">
+<h2 class="anchored" data-anchor-id="generic-code-selected-columns">Generic code: Selected columns</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> [<span class="st">&quot;num_feature_1&quot;</span>, <span class="st">&quot;num_feature_2&quot;</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> [<span class="st">&quot;cat_feature_1&quot;</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>pre <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;num&quot;</span>, Pipeline([</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;scale&quot;</span>, StandardScaler()),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        (<span class="st">&quot;poly&quot;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>, interaction_only<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    ]), num_cols),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;cat&quot;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&quot;first&quot;</span>), cat_cols)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Pipeline([(<span class="st">&quot;prep&quot;</span>, pre), (<span class="st">&quot;lm&quot;</span>, LinearRegression())])</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>model.fit(X_tr, y_tr)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test R²:&quot;</span>, model.score(X_te, y_te))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Interpretation of interactions:</strong> The marginal effect of <span class="math inline">\(x_1\)</span> on <span class="math inline">\(y\)</span> depends on the level of <span class="math inline">\(x_2\)</span> and vice versa.</p>
 </section>
 </section>
 <section id="chapter-12-model-validation" class="level1">
 <h1>Chapter 12 — Model Validation</h1>
 <section id="concepts-2" class="level2">
 <h2 class="anchored" data-anchor-id="concepts-2">Concepts</h2>
+<p>Model validation ensures the model generalizes beyond training data. Key ideas:</p>
 <ul>
-<li><p>Guard against <strong>overfitting</strong> via <strong>train/test split</strong> and <strong>cross-validation</strong>.</p></li>
-<li><p>Metrics for regression:</p>
-<pre><code>  MAE: Mean Absolute Error — average absolute deviation.
-
-  RMSE: Sensitive to large errors.
-
-  R²: Proportion of explained variance.</code></pre></li>
+<li>Overfitting: Model learns noise instead of signal → great on training, poor on test.</li>
+<li>Underfitting: Model too simple → poor on both training and test.</li>
+</ul>
+<p>Metrics:</p>
+<ul>
+<li>MAE: Mean absolute error; interpretable as the average magnitude of mistakes.</li>
+<li>RMSE: Penalizes large deviations more strongly.</li>
+<li>R²: Explains variance captured by the model.</li>
 </ul>
 </section>
-<section id="code-quick-validation" class="level2">
-<h2 class="anchored" data-anchor-id="code-quick-validation">Code: quick validation</h2>
+<section id="generalized-code-1" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-code-1">Generalized code</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error, mean_squared_error, r2_score</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pipe.fit(X_tr, y_tr)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> pipe.predict(X_te)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({<span class="st">&quot;MAE&quot;</span>: mean_absolute_error(y_te, pred),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;RMSE&quot;</span>: mean_squared_error(y_te, pred, squared<span class="op">=</span><span class="va">False</span>),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;R2&quot;</span>: r2_score(y_te, pred)})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tr_pred <span class="op">=</span> pipe.predict(X_tr)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>te_pred <span class="op">=</span> pipe.predict(X_te)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> metrics(y_true, y_hat):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;MAE&quot;</span>: mean_absolute_error(y_true, y_hat),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;RMSE&quot;</span>: mean_squared_error(y_true, y_hat, squared<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;R2&quot;</span>: r2_score(y_true, y_hat)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Train:&quot;</span>, metrics(y_tr, tr_pred))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test:&quot;</span>, metrics(y_te, te_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="interpretation-1" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation-1">Interpretation</h2>
-<p>Use cross-validation to get a more reliable estimate.</p>
-<p>A good model has similar performance across folds (low variance).</p>
-<p>Always look for bias-variance tradeoff:</p>
-<pre><code>    High bias → underfit.
-
-    High variance → overfit.</code></pre>
+<section id="underfitting-vs-overfitting-how-to-see-it-in-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="underfitting-vs-overfitting-how-to-see-it-in-outputs">Underfitting vs Overfitting — how to see it in outputs</h2>
+<section id="overfitting-example" class="level3">
+<h3 class="anchored" data-anchor-id="overfitting-example">Overfitting Example</h3>
+<p>Suppose training R² = 0.95 but test R² = 0.40. This suggests the model is too complex or capturing random fluctuations specific to training data. Regularization or simplification may help.</p>
+</section>
+<section id="underfitting-example" class="level3">
+<h3 class="anchored" data-anchor-id="underfitting-example">Underfitting Example</h3>
+<p>Training R² = 0.40 and test R² = 0.42. Both are low — the model cannot capture essential patterns. Consider adding features or using nonlinear models.</p>
+</section>
+<section id="cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="cross-validation">Cross-Validation</h3>
+<p>Instead of one train/test split, k-fold CV provides a more stable estimate by rotating through multiple train/test partitions.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>cv_scores <span class="op">=</span> cross_val_score(pipe, X, y, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">&quot;r2&quot;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;CV R2 mean:&quot;</span>, np.mean(cv_scores), <span class="st">&quot;±&quot;</span>, np.std(cv_scores))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 </section>
 <section id="chapter-13-pipelines-cross-validation-hyperparameter-tuning" class="level1">
 <h1>Chapter 13 — Pipelines, Cross-Validation, Hyperparameter Tuning</h1>
-<section id="concepts-3" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-3">Concepts</h2>
+<section id="pipeline-all-steps-explained" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-all-steps-explained">Pipeline (all steps explained)</h2>
+<ol type="1">
+<li><strong>Column identification:</strong> Which columns are numeric vs categorical.</li>
+<li><strong>Dummyfying (One-Hot Encoding):</strong> Turn categories into indicator columns.</li>
+<li><strong>Standardization (Scaling):</strong> Center (mean 0) and scale (std 1) numeric features so models are comparable and well-conditioned.</li>
+<li><strong>(Optional) Feature engineering:</strong> Polynomials, interactions.</li>
+<li><strong>Model fitting:</strong> Fit the estimator on transformed data.</li>
+<li><strong>Evaluation:</strong> Use the exact same transformations on test data inside the pipeline; compute metrics.</li>
+<li><strong>Tuning:</strong> Use CV-based search (Grid/Randomized) over hyperparameters (including preprocessing choices).</li>
+</ol>
+<section id="why-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="why-pipelines">Why pipelines?</h3>
 <ul>
-<li><p><strong>Pipelines</strong> combine preprocessing + model consistently.</p></li>
-<li><p><strong>Cross-validation</strong> gives a robust performance estimate.</p></li>
-<li><p><strong>GridSearchCV</strong> (or RandomizedSearchCV) tunes hyperparameters within the pipeline.</p></li>
+<li>Prevent <strong>data leakage</strong> (no peeking at test data during preprocessing).</li>
+<li>Make code reproducible and compact.</li>
+<li>Allow <strong>CV</strong> and <strong>GridSearchCV</strong> to correctly repeat preprocessing inside each fold.</li>
 </ul>
 </section>
-<section id="code-pipeline-cv-grid-search" class="level2">
-<h2 class="anchored" data-anchor-id="code-pipeline-cv-grid-search">Code: pipeline + CV + grid search</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, GridSearchCV</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pipeline with categorical + numeric preprocessing</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>numeric <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;number&quot;</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>categorical <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer([</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;cat&#39;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&#39;first&#39;</span>), categorical),</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;num&#39;</span>, StandardScaler(), numeric)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> Pipeline([</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;prep&#39;</span>, ct),</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;model&#39;</span>, LinearRegression())</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validation</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(pipe, X, y, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">&#39;r2&#39;</span>)</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Mean R²:&quot;</span>, np.mean(scores))</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Search example</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {<span class="st">&#39;model__fit_intercept&#39;</span>: [<span class="va">True</span>, <span class="va">False</span>]}</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> GridSearchCV(pipe, params, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">&#39;r2&#39;</span>)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>grid.fit(X, y)</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grid.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="takeaways-1" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways-1">Takeaways</h2>
+<section id="dummyfying-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="dummyfying-explanation">Dummyfying — explanation</h2>
 <ul>
-<li><p>Pipelines ensure identical preprocessing during training/testing.</p></li>
-<li><p>cross_val_score: robust estimate of performance.</p></li>
-<li><p>GridSearchCV automates tuning.</p></li>
+<li>Many models require numeric inputs. <strong>One-Hot Encoding</strong> converts a single categorical column with <span class="math inline">\(k\)</span> levels into <span class="math inline">\(k\)</span> binary columns (or <span class="math inline">\(k-1\)</span> with <code>drop=&quot;first&quot;</code> to avoid multicollinearity).<br>
+</li>
+<li>Use <code>handle_unknown=&quot;ignore&quot;</code> to safely handle categories not seen in training.</li>
 </ul>
 </section>
-<section id="interpretation-2" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation-2">Interpretation</h2>
-<p>CV reduces dependency on a lucky train-test split.</p>
-<p>Grid search integrates CV to find the best parameters.</p>
-<p>Use RandomizedSearchCV for faster tuning with large grids.</p>
+<section id="standardize-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="standardize-explanation">Standardize — explanation</h2>
+<ul>
+<li>Put numeric features on the same scale. Helps models that are sensitive to feature magnitude (kNN, SVM, penalized regression, gradient methods).<br>
+</li>
+<li>Common scaler: <code>StandardScaler()</code> (zero mean, unit variance). Fit scaler <strong>only on training</strong> data (Pipeline handles this).</li>
+</ul>
+</section>
+<section id="cross-validation-cv" class="level2">
+<h2 class="anchored" data-anchor-id="cross-validation-cv">Cross-Validation (CV)</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, GridSearchCV, StratifiedKFold</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(pipe, X, y, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">&quot;r2&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;CV mean R²:&quot;</span>, np.mean(scores), <span class="st">&quot;±&quot;</span>, np.std(scores))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;model__fit_intercept&quot;</span>: [<span class="va">True</span>, <span class="va">False</span>]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> GridSearchCV(pipe, param_grid, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">&quot;r2&quot;</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>grid.fit(X, y)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Best params:&quot;</span>, grid.best_params_)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Best CV score:&quot;</span>, grid.best_score_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="interpretation-1" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-1">Interpretation</h2>
+<ul>
+<li>Best params: indicate the combination giving the highest CV score.</li>
+<li>CV mean/std: stability measure; high std suggests sensitivity to data splits.</li>
+</ul>
 </section>
 </section>
 <section id="chapter-14-penalized-regression-ridge-lasso-elastic-net" class="level1">
@@ -2684,9 +2806,9 @@ window.Quarto = {
 <section id="math" class="level2">
 <h2 class="anchored" data-anchor-id="math">Math</h2>
 <ul>
-<li><p>Ridge: <span class="math inline">\(\min_\beta \sum (y-X\beta)^2 + \lambda \sum \beta_j^2\)</span> - penalty - shrinks coefficients.</p></li>
-<li><p>Lasso: <span class="math inline">\(\min_\beta \sum (y-X\beta)^2 + \lambda \sum |\beta_j|\)</span> - penalty - can set some coefficients to zero.</p></li>
-<li><p>Elastic Net: <span class="math inline">\(\min_\beta \sum (y-X\beta)^2 + \lambda\left[\alpha \sum |\beta_j| + (1-\alpha)\sum \beta_j^2\right]\)</span> - combination of both.</p></li>
+<li>Ridge (L2): <span class="math inline">\(\min_\beta \sum (y-X\beta)^2 + \lambda \sum \beta_j^2\)</span> — Shrinks coefficients smoothly; useful for multicollinearity..</li>
+<li>Lasso (L1): <span class="math inline">\(\min_\beta \sum (y-X\beta)^2 + \lambda \sum |\beta_j|\)</span> — can set some coefficients to exactly zero - Encourages sparsity; performs feature selection..</li>
+<li>Elastic Net: combine L1 + L2 with mixing parameter <span class="math inline">\(\alpha\)</span>.</li>
 </ul>
 </section>
 <section id="code-quick-comparison" class="level2">
@@ -2701,175 +2823,282 @@ window.Quarto = {
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    model.fit(X_train, y_train)</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(model.<span class="va">__class__</span>.<span class="va">__name__</span>, model.score(X_test, y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="takeaways-2" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways-2">Takeaways</h2>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
 <ul>
-<li><p>Use Ridge when all variables are relevant.</p></li>
-<li><p>Use Lasso for feature selection.</p></li>
-<li><p>Use ElasticNet when features are correlated.</p></li>
-<li><p>Tune alpha carefully — too high = underfit.</p></li>
+<li>Use Ridge when all variables are relevant.</li>
+<li>Use Lasso for feature selection.</li>
+<li>Use ElasticNet when features are correlated.</li>
+<li>Tune alpha carefully — too high = underfit.</li>
+</ul>
+</section>
+<section id="interpretation-2" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-2">Interpretation</h2>
+<ul>
+<li>As <span class="math inline">\(\lambda\)</span> increases, coefficients shrink toward zero.</li>
+<li>Ridge never sets coefficients exactly to zero; Lasso can.</li>
+<li>Elastic Net useful when predictors are correlated (Lasso may arbitrarily pick one).</li>
 </ul>
 </section>
 </section>
 <section id="chapter-15-nonparametric-methods-knn-trees" class="level1">
 <h1>Chapter 15 — Nonparametric Methods: kNN &amp; Trees</h1>
-<section id="concepts-4" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-4">Concepts</h2>
-<ul>
-<li><p><strong>kNN (classification/regression):</strong> predict from the neighborhood of similar points.</p></li>
-<li><p><strong>Decision Trees:</strong> recursive splits to maximize purity (classification) or reduce variance (regression).</p></li>
-</ul>
+<section id="knn-regression-classification" class="level2">
+<h2 class="anchored" data-anchor-id="knn-regression-classification">kNN (regression &amp; classification)</h2>
+<p><strong>Prediction method:</strong> - Regression: <span class="math inline">\(\hat y\)</span> = average of the <span class="math inline">\(k\)</span> nearest neighbors’ <span class="math inline">\(y\)</span> values. (<code>KNeighborsRegressor.predict</code>) - Classification: <span class="math inline">\(\hat y\)</span> = majority vote among <span class="math inline">\(k\)</span> nearest neighbors. (<code>KNeighborsClassifier.predict</code>); class probabilities via <code>predict_proba</code> = fraction of neighbors in each class.</p>
+<p><strong>Interpretation:</strong> - Small <span class="math inline">\(k\)</span> → low bias, high variance (can overfit).<br>
+- Large <span class="math inline">\(k\)</span> → higher bias, lower variance (can underfit).<br>
+- Sensitive to scale — <strong>standardize</strong> features.</p>
 </section>
-<section id="code-knn-decision-tree-classification" class="level2">
-<h2 class="anchored" data-anchor-id="code-knn-decision-tree-classification">Code: kNN &amp; Decision Tree (classification)</h2>
+<section id="decisiontreeregressor" class="level2">
+<h2 class="anchored" data-anchor-id="decisiontreeregressor">DecisionTreeRegressor</h2>
+<p><strong>Prediction method:</strong> Mean of training targets in the terminal (leaf) node reached by the input. (<code>DecisionTreeRegressor.predict</code>)</p>
+<p><strong>Interpretation:</strong> - Splits partition feature space; easy to visualize rules (“if-else” structure). - Deep trees can <strong>overfit</strong>; control with <code>max_depth</code>(limits tree growth), <code>min_samples_leaf</code>/ <code>min_samples_split</code> (control minimum data per split/leaf), etc. - Feature importance gives relative split usefulness (caution: biased toward high-cardinality).</p>
+</section>
+<section id="code-knn" class="level2">
+<h2 class="anchored" data-anchor-id="code-knn">Code: kNN</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model <span class="kw">in</span> [knn, tree]:</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    model.fit(X_train, y_train)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(model.<span class="va">__class__</span>.<span class="va">__name__</span>, model.score(X_test, y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> Pipeline([(<span class="st">&quot;sc&quot;</span>, StandardScaler()), (<span class="st">&quot;knn&quot;</span>, KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">5</span>))])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>knn.fit(X_tr, y_tr)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;kNN RMSE:&quot;</span>, mean_squared_error(y_te, knn.predict(X_te), squared<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="takeaways-3" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways-3">Takeaways</h2>
-<ul>
-<li><p>kNN: simple, no training, but slow for large data.</p></li>
-<li><p>Trees: easy to interpret but prone to overfitting.</p></li>
-<li><p>Tune k, max_depth, min_samples_leaf</p></li>
-</ul>
+<section id="code-decision-tree-regression" class="level2">
+<h2 class="anchored" data-anchor-id="code-decision-tree-regression">Code: Decision Tree (regression)</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>best_rmse <span class="op">=</span> <span class="bu">float</span>(<span class="st">&quot;inf&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span>d, random_state<span class="op">=</span><span class="dv">42</span>).fit(X_tr, y_tr)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(y_te, tree.predict(X_te), squared<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rmse <span class="op">&lt;</span> best_rmse:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>best_rmse, best <span class="op">=</span> rmse, tree</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({<span class="st">&quot;best_depth&quot;</span>: best.get_params()[<span class="st">&quot;max_depth&quot;</span>], <span class="st">&quot;RMSE&quot;</span>: best_rmse})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="chapter-16-introduction-to-classification-logistic-regression" class="level1">
 <h1>Chapter 16 — Introduction to Classification (Logistic Regression)</h1>
-<section id="concepts-5" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-5">Concepts</h2>
-<ul>
-<li><p>Predicting categories instead of numeric outcomes.</p></li>
-<li><p>Output is a probability between 0 and 1.</p></li>
-<li><p>Decision boundary defined by 0.5 threshold (can be adjusted).</p></li>
-<li><p>Metrics: Accuracy, Precision, Recall, F1, ROC-AUC.</p></li>
-</ul>
-</section>
-<section id="math-1" class="level2">
-<h2 class="anchored" data-anchor-id="math-1">Math</h2>
-<ul>
-<li><p>Logistic model: <span class="math inline">\(P(y=1|x)=\sigma(w^\top x+b)=\frac{1}{1+e^{-(w^\top x+b)}}\)</span>.</p></li>
-<li><p>Estimate by maximizing log-likelihood (equivalently minimizing cross-entropy).</p></li>
-</ul>
+<section id="logistic-regression-binary" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression-binary">Logistic Regression (binary)</h2>
+<p>ntuition</p>
+<p>Logistic regression models probability using the sigmoid (logit) transformation: <span class="math display">\[P(y = 1 |X) = \frac{1}{1 + e^{X\beta}}\]</span></p>
+<p>Linear in log-odds: <span class="math inline">\(\log\frac{p}{1-p} = X\beta\)</span></p>
+<p>Coefficients (<span class="math inline">\(\beta\)</span>) represent the log change in odds for one-unit change in the predictor. <strong>Prediction methods:</strong> - <code>predict_proba(X)[:,1]</code> → estimated <span class="math inline">\(P(y=1\mid X)\)</span> via sigmoid of linear score. - <code>decision_function(X)</code> → raw log-odds score. - <code>predict(X)</code> → class label using threshold 0.5 by default (can adjust).</p>
+<p><strong>Interpretation:</strong> - Coefficients are in <strong>log-odds</strong> units: a one-unit increase in <span class="math inline">\(x_j\)</span> changes <span class="math inline">\(\log\frac{p}{1-p}\)</span> by <span class="math inline">\(\beta_j\)</span>, holding other features constant.<br>
+- <span class="math inline">\(\exp(\beta_j)\)</span> gives the <strong>odds ratio</strong> (multiplicative change in odds for one-unit increase in <span class="math inline">\(x_j\)</span>).<br>
+- Standardization helps if features have very different scales.</p>
 </section>
 <section id="code-binary-classification-template" class="level2">
 <h2 class="anchored" data-anchor-id="code-binary-classification-template">Code: binary classification template</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, confusion_matrix</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>logit <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>logit.fit(X_train, y_train)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> logit.predict(X_test)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, preds))</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, preds))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="takeaways-4" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways-4">Takeaways</h2>
-<ul>
-<li><p>Use logistic regression for binary outcomes.</p></li>
-<li><p>Evaluate beyond accuracy — look at F1 and ROC-AUC.</p></li>
-</ul>
-</section>
-<section id="interpretations" class="level2">
-<h2 class="anchored" data-anchor-id="interpretations">Interpretations</h2>
-<p>Precision: correctness of positive predictions.</p>
-<p>Recall: completeness — did we catch all positives?</p>
-<p>F1-score: harmonic mean of precision &amp; recall.</p>
-<p>ROC-AUC: measures ranking quality; higher = better separation.</p>
-<p>Adjust thresholds based on cost of false positives/negatives.</p>
-</section>
-</section>
-<section id="chapter-17-linear-classifiers-ldaqda-linear-svm" class="level1">
-<h1>Chapter 17 — Linear Classifiers: LDA/QDA, Linear SVM</h1>
-<section id="concepts-6" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-6">Concepts</h2>
-<ul>
-<li><p>LDA: assumes equal covariance for all classes.</p></li>
-<li><p>QDA: allows class-specific covariance.</p></li>
-<li><p>SVM: finds the hyperplane with maximum margin.</p></li>
-</ul>
-</section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, confusion_matrix, roc_auc_score</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>lda <span class="op">=</span> LinearDiscriminantAnalysis()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>qda <span class="op">=</span> QuadraticDiscriminantAnalysis()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">&#39;linear&#39;</span>, C<span class="op">=</span><span class="fl">1.0</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model <span class="kw">in</span> [lda, qda, svm]:</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    model.fit(X_train, y_train)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(model.<span class="va">__class__</span>.<span class="va">__name__</span>, model.score(X_test, y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>LDA/QDA: good for small, clean datasets.</p>
-<p>SVM: powerful for high-dimensional data.</p>
-</div>
-</div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>logit <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>logit.fit(X_train, y_train)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> logit.predict(X_test)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> logit.predict_proba(X_test)[:,<span class="dv">1</span>]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, preds))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, preds))</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;ROC-AUC:&quot;</span>, roc_auc_score(y_test, probs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="interpretation-example" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-example">Interpretation Example</h2>
+<p>If <span class="math inline">\(\beta_j = 0.7\)</span>, then <span class="math inline">\(e^{0.7} \approx 2.01\)</span> → the odds of the event double for each unit increase in <span class="math inline">\(x_j\)</span>.</p>
+</section>
+</section>
+<section id="chapter-17-linear-classifiers-lda-qda-svmsvc" class="level1">
+<h1>Chapter 17 — Linear Classifiers: LDA, QDA, SVM/SVC</h1>
+<section id="lda-linear-discriminant-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="lda-linear-discriminant-analysis">LDA (Linear Discriminant Analysis)</h2>
+<p>Assumes class-conditional normal distributions with equal covariances → linear decision boundaries.</p>
+<ul>
+<li>Great for interpretability.</li>
+<li>Performs well on small datasets with linear separability.</li>
+</ul>
+<p><strong>Prediction methods:</strong> - <code>predict(X)</code> → class with highest posterior. - <code>predict_proba(X)</code> → class posterior probabilities under Gaussian class-conditional model with <strong>shared covariance</strong>.</p>
+<p><strong>Interpretation:</strong> - Linear decision boundaries. Works well when classes are approximately normal with equal covariance matrices. - Also provides linear discriminant directions for visualization/dimension reduction.</p>
+</section>
+<section id="qda-quadratic-discriminant-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="qda-quadratic-discriminant-analysis">QDA (Quadratic Discriminant Analysis)</h2>
+<p>Allows different covariance per class → quadratic boundaries.</p>
+<ul>
+<li>More flexible, higher variance.</li>
+<li>Needs larger sample sizes to estimate covariances.</li>
+</ul>
+<p><strong>Prediction methods:</strong> - <code>predict(X)</code>, <code>predict_proba(X)</code> similar to LDA but with <strong>class-specific covariance</strong>. <strong>Interpretation:</strong> - Quadratic boundaries; more flexible but higher variance—needs more data.</p>
+</section>
+<section id="svm-svc-support-vector-machines" class="level2">
+<h2 class="anchored" data-anchor-id="svm-svc-support-vector-machines">SVM / SVC (support vector machines)</h2>
+<p>Finds hyperplane maximizing margin between classes. <strong>Terminology:</strong> - In sklearn, <strong><code>SVC</code></strong> is the classifier; <strong><code>SVR</code></strong> is the regressor. “SVM” refers to the general method.</p>
+<p><strong>Prediction methods (SVC):</strong> - <code>predict(X)</code> → class label based on which side of the hyperplane you fall. - <code>decision_function(X)</code> → signed distance to the separating surface (margin score). - <code>predict_proba(X)</code> → probabilities <strong>only if</strong> <code>probability=True</code> (uses Platt scaling; slower).</p>
+<p><strong>Interpretation:</strong> - Finds the hyperplane with <strong>maximum margin</strong> between classes (linear kernel).<br>
+- Kernels (e.g., RBF) create non-linear boundaries in original space.<br>
+- <strong>C</strong> controls margin/penalty tradeoff (large C → less regularization → fit training better but risk overfitting).<br>
+- <strong>gamma</strong> (RBF) controls influence of points (large gamma → tighter, wigglier boundary).<br>
+- Standardization strongly recommended.</p>
+</section>
+<section id="linear-svm" class="level2">
+<h2 class="anchored" data-anchor-id="linear-svm">Linear SVM</h2>
+<ul>
+<li>Use <code>SVC(kernel=&quot;linear&quot;)</code> or <code>LinearSVC</code> (the latter uses a different solver and hinge loss; no <code>predict_proba</code>).</li>
+</ul>
+</section>
+<section id="code-lda-qda-svc" class="level2">
+<h2 class="anchored" data-anchor-id="code-lda-qda-svc">Code: LDA, QDA, SVC</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>lda <span class="op">=</span> LinearDiscriminantAnalysis()</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>qda <span class="op">=</span> QuadraticDiscriminantAnalysis()</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>svc <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">&#39;linear&#39;</span>, C<span class="op">=</span><span class="fl">1.0</span>, probability<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model <span class="kw">in</span> [lda, qda, svc]:</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    model.fit(X_train, y_train)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(model.<span class="va">__class__</span>.<span class="va">__name__</span>, <span class="st">&quot;Test Accuracy:&quot;</span>, model.score(X_test, y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="code-rbf-svm-with-cgamma-grid" class="level2">
+<h2 class="anchored" data-anchor-id="code-rbf-svm-with-cgamma-grid">Code: RBF SVM with C/gamma grid</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {<span class="st">&quot;C&quot;</span>: [<span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>], <span class="st">&quot;gamma&quot;</span>: [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>]}</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>rbf <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">&quot;rbf&quot;</span>, probability<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>svm_search <span class="op">=</span> GridSearchCV(rbf, param_grid, cv<span class="op">=</span><span class="dv">3</span>, scoring<span class="op">=</span><span class="st">&quot;roc_auc&quot;</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>svm_search.fit(X, y)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(svm_search.best_params_, svm_search.best_score_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="chapter-18-multiclass-classification" class="level1">
 <h1>Chapter 18 — Multiclass Classification</h1>
-<section id="concepts-7" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-7">Concepts</h2>
+<section id="strategies" class="level2">
+<h2 class="anchored" data-anchor-id="strategies">Strategies</h2>
 <ul>
-<li><p>Extend binary classifiers using:</p>
-<pre><code>  - One-vs-Rest (OvR): 1 model per class.
-
-  - One-vs-One (OvO): 1 model per class pair.</code></pre></li>
-<li><p>Evaluation metrics:</p>
-<pre><code>  - Micro average: aggregate globally.
-
-  - Macro average: mean across classes.</code></pre></li>
+<li><strong>One-vs-Rest (OvR):</strong> Train one binary classifier per class vs all others. Most linear models in sklearn use OvR by default.</li>
+<li><strong>One-vs-One (OvO):</strong> Train a classifier for each pair of classes; prediction via voting (commonly used by SVC).</li>
+<li><strong>Multinomial (native):</strong> Some models (e.g., <code>LogisticRegression(multi_class=&quot;multinomial&quot;, solver=&quot;lbfgs&quot;)</code>) directly optimize for multiclass.</li>
 </ul>
 </section>
-<section id="code-multinomial-vs-ovr-vs-ovo" class="level2">
-<h2 class="anchored" data-anchor-id="code-multinomial-vs-ovr-vs-ovo">Code: multinomial vs OvR vs OvO</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsRestClassifier</span>
+<section id="metrics" class="level2">
+<h2 class="anchored" data-anchor-id="metrics">Metrics</h2>
+<ul>
+<li><strong>Accuracy</strong> can be misleading under imbalance. Prefer <strong>macro-averaged</strong> precision/recall/F1 to weight classes equally; <strong>micro</strong> aggregates across all instances.</li>
+<li><strong>Confusion matrix</strong> generalizes to multiclass to see per-class errors.</li>
+</ul>
+</section>
+<section id="code-multinomial-vs-ovr-vs-ovo-example" class="level2">
+<h2 class="anchored" data-anchor-id="code-multinomial-vs-ovr-vs-ovo-example">Code: multinomial vs OvR vs OvO (example)</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsRestClassifier, OneVsOneClassifier</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>ovr <span class="op">=</span> OneVsRestClassifier(LogisticRegression(max_iter<span class="op">=</span><span class="dv">5000</span>))</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>ovr.fit(X_train, y_train)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> ovr.predict(X_test)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>ovr_log <span class="op">=</span> OneVsRestClassifier(LogisticRegression(max_iter<span class="op">=</span><span class="dv">5000</span>))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ovo_svc <span class="op">=</span> OneVsOneClassifier(SVC(kernel<span class="op">=</span><span class="st">&quot;linear&quot;</span>))</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Macro F1:&quot;</span>, f1_score(y_test, pred, average<span class="op">=</span><span class="st">&#39;macro&#39;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> clf <span class="kw">in</span> [ovr_log, ovo_svc]:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    clf.fit(X_train, y_train)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(clf.<span class="va">__class__</span>.<span class="va">__name__</span>, <span class="st">&quot;Macro F1:&quot;</span>, f1_score(y_test, pred, average<span class="op">=</span><span class="st">&#39;macro&#39;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="takeaways-5" class="level1">
-<h1>Takeaways</h1>
-<p>Most sklearn classifiers automatically handle multiclass.</p>
-<p>Use macro-F1 for class imbalance.</p>
-<p>Logistic regression + OvR works well as a baseline.</p>
+<section id="roc-auc-f1-and-loss-functions" class="level1">
+<h1>ROC, AUC, F1, and Loss Functions</h1>
+<section id="roc-auc" class="level2">
+<h2 class="anchored" data-anchor-id="roc-auc">ROC &amp; AUC</h2>
+<ul>
+<li><strong>ROC curve:</strong> plots True Positive Rate (TPR/Recall) vs False Positive Rate (FPR) as threshold varies.</li>
+<li><strong>AUC:</strong> area under ROC; probability a random positive ranks above a random negative. Threshold-independent.
+<ul>
+<li>AUC = 0.5: random guessing.</li>
+<li>AUC = 1.0: perfect separation.</li>
+<li>AUC = 0.7-0.9: good model.</li>
+</ul></li>
+<li>Use model <strong>scores</strong> (<code>predict_proba</code> or <code>decision_function</code>) to compute ROC/AUC.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve, roc_auc_score</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> clf.decision_function(X_test)  <span class="co"># or predict_proba(X_test)[:,1]</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>fpr, tpr, thr <span class="op">=</span> roc_curve(y_test, scores)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>auc <span class="op">=</span> roc_auc_score(y_test, scores)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;AUC:&quot;</span>, auc)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>roc_df <span class="op">=</span> pd.DataFrame({<span class="st">&quot;FPR&quot;</span>: fpr, <span class="st">&quot;TPR&quot;</span>: tpr})</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>ggplot(roc_df, aes(<span class="st">&quot;FPR&quot;</span>, <span class="st">&quot;TPR&quot;</span>))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> geom_line()</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> geom_abline(slope<span class="op">=</span><span class="dv">1</span>, intercept<span class="op">=</span><span class="dv">0</span>, linetype<span class="op">=</span><span class="st">&quot;dashed&quot;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> labs(title<span class="op">=</span><span class="st">&quot;ROC Curve&quot;</span>, x<span class="op">=</span><span class="st">&quot;FPR&quot;</span>, y<span class="op">=</span><span class="st">&quot;TPR&quot;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> theme_minimal()</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="business-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="business-interpretation">Business Interpretation</h2>
+<p>Choosing threshold = balancing costs. Example: In fraud detection, prefer high recall even if precision drops slightly.</p>
+</section>
+<section id="precision-recall-f1" class="level2">
+<h2 class="anchored" data-anchor-id="precision-recall-f1">Precision, Recall, F1</h2>
+<ul>
+<li><strong>Precision:</strong> <span class="math inline">\(\text{TP} / (\text{TP} + \text{FP})\)</span></li>
+<li><strong>Recall (TPR):</strong> <span class="math inline">\(\text{TP} / (\text{TP} + \text{FN})\)</span></li>
+<li><strong>F1:</strong> harmonic mean of precision &amp; recall<br>
+<span class="math display">\[F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}\]</span></li>
+</ul>
+<section id="precision-vs-recall-tradeoff" class="level3">
+<h3 class="anchored" data-anchor-id="precision-vs-recall-tradeoff">Precision vs Recall Tradeoff</h3>
+<ul>
+<li>High precision = fewer false positives.</li>
+<li>High recall = fewer false negatives.</li>
+<li>F1-score balances both; useful when both errors matter.</li>
+</ul>
+</section>
+</section>
+<section id="common-loss-functions" class="level2">
+<h2 class="anchored" data-anchor-id="common-loss-functions">Common loss functions</h2>
+<ul>
+<li><strong>Regression:</strong> MSE (squared loss), MAE (absolute loss).</li>
+<li><strong>Logistic regression / probabilistic classifiers:</strong> <strong>Log loss</strong> (cross-entropy), minimized by correct calibrated probabilities.</li>
+<li><strong>Linear SVM (<code>LinearSVC</code>):</strong> <strong>Hinge loss</strong>; margin violations are penalized linearly (with regularization via C).</li>
+</ul>
+</section>
 </section>
 <section id="miscellaneous" class="level1">
 <h1>Miscellaneous</h1>
-<section id="dummyfy" class="level2">
-<h2 class="anchored" data-anchor-id="dummyfy">Dummyfy</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>X_dum <span class="op">=</span> pd.get_dummies(X, drop_first<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sklearn in ColumnTransformer (recommended)</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer([(<span class="st">&quot;cat&quot;</span>, OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>, handle_unknown<span class="op">=</span><span class="st">&#39;ignore&#39;</span>), cat_cols)],</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                       remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pipeline-snippets" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-snippets">Pipeline snippets</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer, make_column_selector <span class="im">as</span> selector</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder, StandardScaler</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;number&quot;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>cat <span class="op">=</span> selector(dtype_include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>pre <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;cat&quot;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&#39;first&#39;</span>, handle_unknown<span class="op">=</span><span class="st">&#39;ignore&#39;</span>), cat),</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;num&quot;</span>, StandardScaler(), num)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> Pipeline([(<span class="st">&quot;prep&quot;</span>, pre), (<span class="st">&quot;model&quot;</span>, LinearRegression())])</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>pipe.fit(X_train, y_train)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>pipe.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="dummyfy-one-hot-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="dummyfy-one-hot-encoding">Dummyfy (One-Hot Encoding)</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas (quick-and-dirty)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>X_dum <span class="op">=</span> pd.get_dummies(X, drop_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sklearn (recommended for pipelines)</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;cat&quot;</span>, OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>, handle_unknown<span class="op">=</span><span class="st">&#39;ignore&#39;</span>), cat_cols)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>], remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="standardize" class="level2">
+<h2 class="anchored" data-anchor-id="standardize">Standardize</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(X_train)  <span class="co"># fit only on train</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>X_te_scaled <span class="op">=</span> scaler.transform(X_test)    <span class="co"># transform test with same params</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 
