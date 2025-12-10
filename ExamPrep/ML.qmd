@@ -8,13 +8,33 @@ format:
 theme: flatly
 # link to Google Fonts (or your own)
 include-in-header:
-        - text: |
+   - text: |
                 <link rel="stylesheet"
                         href="https://fonts.googleapis.com/css2?family=Englebert&display=swap">
 mainfont: "Englebert, cursive"
 ---
 
 
+# General Concepts to know
+
+## What Are Hyperparameters?
+Hyperparameters are settings chosen before training that determine the structure or flexibility of a model. They control complexity, and therefore directly influence:
+- Bias
+- Variance
+- Overfitting vs. underfitting
+- Speed of training
+- Interpretability
+
+### Bias and Variance 
+**Bias** - The difference between the average prediction of a model and the true value it is trying to predict.
+
+**Variance** - The variability of a model's predictions for a given input across different training datasets.
+
+#### Increasing Model Flexibility - capture complex patterns but risk overfitting
+Bias decreases, variance increases
+
+#### Decreasing Model Flexibility - capture simple patterns but risk underfitting
+Bias increases, variance decreases
 
 # Chapter 10 — Introduction to Predictive Modeling
 
@@ -29,9 +49,9 @@ mainfont: "Englebert, cursive"
 
 - Training vs Testing data:
 
-        - Train on one subset.
+   - Train on one subset.
 
-        - Test (evaluate) on another — simulates new, unseen data.
+   - Test (evaluate) on another — simulates new, unseen data.
 
 - Workflow (sklearn-style): **split → preprocess → fit → predict → evaluate**.
 
@@ -68,9 +88,9 @@ print("R2:", r2_score(y_te, pred))
 
 - Metrics:
 
-        - R²: variance explained.
+   - R²: variance explained.
 
-        - RMSE: average prediction error.
+   - RMSE: average prediction error.
 
 - Never evaluate only on the training set!
 
@@ -228,24 +248,21 @@ print({"MAE": mean_absolute_error(y_te, pred),
 ```
 
 ## Interpretation
-Use cross-validation to get a more reliable estimate.
-
-A good model has similar performance across folds (low variance).
-
-Always look for bias-variance tradeoff:
-
-        High bias → underfit.
-
-        High variance → overfit.
+- Use cross-validation to get a more reliable estimate.
+- A good model has similar performance across folds (low variance).
+- Always look for bias-variance tradeoff:
+   - High bias → underfit.
+   - High variance → overfit.
 
 # Chapter 13 — Pipelines, Cross-Validation, Hyperparameter Tuning
 
 ## Concepts
 - **Pipelines** combine preprocessing + model consistently.
-
 - **Cross-validation** gives a robust performance estimate.
-
 - **GridSearchCV** (or RandomizedSearchCV) tunes hyperparameters within the pipeline.
+   - Try all combinations of hyperparameters.
+   - Guaranteed to test every candidate configuration.
+   - Expensive when parameter space is large.
 
 ## Code: pipeline + CV + grid search
 ```python
@@ -281,18 +298,14 @@ print(grid.best_params_)
 ## Takeaways
 
 - Pipelines ensure identical preprocessing during training/testing.
-
 - cross_val_score: robust estimate of performance.
-
 - GridSearchCV automates tuning.
 
 ## Interpretation
 
-CV reduces dependency on a lucky train-test split.
-
-Grid search integrates CV to find the best parameters.
-
-Use RandomizedSearchCV for faster tuning with large grids.
+- CV reduces dependency on a lucky train-test split.
+- Grid search integrates CV to find the best parameters.
+- Use RandomizedSearchCV for faster tuning with large grids.
 
 # Chapter 14 — Penalized Regression (Ridge, Lasso, Elastic Net)
 
@@ -318,13 +331,22 @@ for model in [ridge, lasso, enet]:
 ```
 
 ## Takeaways
-- Use Ridge when all variables are relevant.
-
-- Use Lasso for feature selection.
-
+- Use Ridge when all variables are relevant. Ridge better when many small effects exist
+- Use Lasso for feature selection. Lasso reduces number of predictors used
 - Use ElasticNet when features are correlated.
-
 - Tune alpha carefully — too high = underfit.
+- Regularization reduces variance
+
+## Interpretation
+- Low regularization strength (Ridge/Lasso) - Increasing Model Flexibility
+- Strong regularization (L1/L2) - Reducing Model Flexibility
+
+### Ridge regression
+alpha increases → coefficients shrink → lower variance, higher bias
+
+### Lasso regression
+- Can set coefficients to zero → feature selection
+- Too large alpha causes underfitting
 
 # Chapter 15 — Nonparametric Methods: kNN & Trees
 
@@ -353,6 +375,28 @@ for model in [knn, tree]:
 - Trees: easy to interpret but prone to overfitting.
 
 - Tune k, max_depth, min_samples_leaf
+
+## Interpretation 
+
+### KNN
+|Hyperparameter | Effect|
+|--------------|-------|
+|k | Controls smoothness of decision boundary|
+
+- Small k = highly jagged boundary → high variance
+- Large k = too smooth → high bias
+- Test error minimized at moderate k
+
+### Decision Trees
+|Hyperparameter | Effect|
+|--------------|-------|
+|max_depth | Limits depth → main control of complexity|
+|min_samples_split | Minimum samples to split → larger = less complex|
+|min_samples_leaf | Minimum samples per leaf → smooths the tree|
+|max_leaf_nodes | Directly caps number of terminal nodes|
+
+- Increasing max_depth → lower training error, higher variance
+- Increasing min_samples_leaf → higher training error, lower variance
 
 # Chapter 16 — Introduction to Classification (Logistic Regression)
 
@@ -390,25 +434,54 @@ print(classification_report(y_test, preds))
 - Evaluate beyond accuracy — look at F1 and ROC-AUC.
 
 ## Interpretations
+- Accuracy: proportion of correct predictions. High accuracy → good model.
+- Precision: correctness of positive predictions. High precision → few false positives
+- Recall: completeness — did we catch all positives? High recall → few false negatives
+- F1-score: harmonic mean of precision & recall. Good when classes are imbalanced
+- ROC-AUC: measures ranking quality; higher = better separation. ROC AUC is fine when classes are balanced.
+   - x-axis: False Positive Rate (FPR)
+   - y-axis: True Positive Rate (TPR) = Recall as you vary the decision threshold from 1 → 0.
+   - ROC AUC: Probability that a randomly chosen positive is ranked above a randomly chosen negative.
+   - 0.5 = random
+   - 1.0 = perfect
+- Adjust thresholds based on cost of false positives/negatives.
 
-Precision: correctness of positive predictions.
+## Predictions
+- **High FP:** Model overpredicts positives → precision drops  
+- **High FN:** Model misses positives → recall drops  
+- **High TP:** Good at identifying positives → recall high  
+- **High TN:** Good at identifying negatives → specificity high 
 
-Recall: completeness — did we catch all positives?
+**Conservative model (predicts 1 rarely):**  
+- Low FP, high FN  
+- High precision, low recall  
 
-F1-score: harmonic mean of precision & recall.
-
-ROC-AUC: measures ranking quality; higher = better separation.
-
-Adjust thresholds based on cost of false positives/negatives.
+**Aggressive model (predicts 1 often):**  
+- High FP, low FN  
+- High recall, low precision  
 
 # Chapter 17 — Linear Classifiers: LDA/QDA, Linear SVM
 
 ## Concepts
-- LDA: assumes equal covariance for all classes.
+### Linear Discriminant Analysis (LDA)
+- A **generative classifier**: models the distribution of each class.
+- Assumes:
+  - Predictors (X) follow a **multivariate normal distribution** within each class.
+  - All classes share a **common covariance matrix** (Σ).
+- This assumption forces **linear decision boundaries**.
+- Works well when:
+  - Classes are well-separated but with similar within-class variability.
+  - Data is roughly Gaussian.
+  - You want a simple, interpretable classifier.
 
-- QDA: allows class-specific covariance.
+### Quadratic Discriminant Analysis (QDA)
+- Also a **generative classifier**, but:
+  - Each class gets its own covariance matrix (Σ_k).
+- This leads to **quadratic decision boundaries** (more flexible).
+- Works well when:
+  - Classes have different variances or covariance structures.
+  - You have enough data to estimate separate covariance matrices.
 
-- SVM: finds the hyperplane with maximum margin.
 
 ## Code
 ```python
@@ -429,21 +502,59 @@ LDA/QDA: good for small, clean datasets.
 SVM: powerful for high-dimensional data.
 :::
 
+## Interpretation
+
+### Linear SVM
+|Hyperparameter | Effect|
+|--------------|-------|
+| C | Large C → low bias, high variance (hard margin-like). Small C → soft margin → high bias, low variance |
+
+### RBF Kernel SVM
+|Hyperparameter | Effect|
+|--------------|-------|
+| gamma | Large γ → highly flexible, fits small regions (overfitting). Small γ → smooth boundary |
+
+- C controls margin flexibility
+- gamma controls “wiggliness” of boundary
+- High C + high gamma = extreme overfitting
+
+### LDA and QDA
+- LDA = linear boundaries, low variance, strong baseline classifier
+- QDA = quadratic boundaries, more flexible, higher variance
+- LDA > QDA when data is scarce
+- QDA > LDA when class distributions vary
 
 # Chapter 18 — Multiclass Classification
 
 ## Concepts
 - Extend binary classifiers using:
-
-        - One-vs-Rest (OvR): 1 model per class.
-
-        - One-vs-One (OvO): 1 model per class pair.
+   - One-vs-Rest (OvR): 1 model per class.
+   - One-vs-One (OvO): 1 model per class pair.
 
 - Evaluation metrics:
+   - Micro average: aggregate globally.
+   - Macro average: mean across classes.
+### OVR
+#### Pros
+- Simple and intuitive  
+- Works well with **linear models** (e.g., Logistic Regression, Linear SVM)  
+- Efficient when **K is large**
 
-        - Micro average: aggregate globally.
+#### Cons
+- Negative class is very large → class imbalance issues  
+- If classes overlap heavily, OvR boundaries may be less accurate  
+- Models may produce conflicting probability estimates
 
-        - Macro average: mean across classes.
+### OVO
+####  Pros
+- Each classifier handles only **two classes** → simpler boundaries  
+- Often performs better for **nonlinear models** (e.g., SVM)  
+- Computationally efficient at prediction time
+
+#### Cons
+- Can require many models when **K is large**  
+- More computational cost during training  
+- Combining votes may be ambiguous if data is messy
 
 ## Code: multinomial vs OvR vs OvO
 ```python
