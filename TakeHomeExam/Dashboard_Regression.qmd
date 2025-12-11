@@ -1,0 +1,74 @@
+---
+title: "House Price Regression"
+author: "Nav Sanya Anand"
+format:
+  dashboard:
+    theme: united
+    embed-resources: true
+
+---
+
+<style>
+/* Smaller cards and tables for better fit */
+.quarto-dashboard .card {
+  padding: 0.75rem !important;
+}
+.quarto-dashboard img {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+table {
+  font-size: 0.9em;
+}
+.valuebox {
+  transform: scale(0.95);
+}
+</style>
+
+# Stats
+
+## Row
+
+::: {.valuebox icon="ruler" color="primary"}
+**Best CV RMSE (log target)**  
+0.132
+:::
+
+::: {.valuebox icon="trophy" color="success"}
+**Best Model**  
+Ridge Polynomial Regression
+:::
+
+::: {.valuebox icon="list-ul" color="info"}
+**Models Evaluated**  
+9
+:::
+
+## Row
+
+### Cross-Validated RMSE by Model
+
+![](regression_cv_rmse.png){width=60%}
+
+## Row
+
+### Model Comparison Table
+
+Cross-validated RMSE on the log-transformed SalePrice for each model:
+
+<div style="max-height: 260px; overflow-y: auto;">
+
+| Model                                      | CV RMSE (log target) |
+|--------------------------------------------|----------------------:|
+| Ridge Polynomial Regression                | 0.132                |
+| Ridge Polynomial Regression (Interaction)  | 0.133                |
+| Polynomial Regression (Interaction Only)   | 0.479                |
+| Polynomial Regression (Full)               | 1.444                |
+| Ridge Regression                           | 0.138                |
+| Lasso Regression                           | 0.137                |
+| Linear Regression                          | 0.138                |
+| k-Nearest Neighbors                        | 0.156                |
+| Decision Tree                              | 0.174                |
+
+</div>

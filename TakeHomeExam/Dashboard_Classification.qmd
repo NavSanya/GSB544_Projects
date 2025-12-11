@@ -1,0 +1,55 @@
+---
+title: "Political Affiliation Classification"
+author: "Nav Sanya Anand"
+format:
+  dashboard:
+    theme: united
+    embed-resources: true
+---
+
+# Stats
+
+## Row
+
+::: {.valuebox icon="check-circle" color="primary"}
+**Best CV Accuracy**  
+0.629
+:::
+
+::: {.valuebox icon="trophy" color="success"}
+**Best Model**  
+SVM (RBF Kernel)
+:::
+
+::: {.valuebox icon="list-ul" color="info"}
+**Models Evaluated**  
+6
+:::
+
+## Row
+
+### Cross-Validated Accuracy by Model
+
+![](classification_cv_accuracy.png){width=100%}
+
+### CV Metrics by Model
+
+![](classification_cv_metrics.png){width=100%}
+
+
+## Row
+
+### Model Comparison Table
+
+Summary of the tuned models and their best cross-validated metrics:
+
+| Model                         | CV Accuracy | CV F1 (macro) | CV Balanced Accuracy |
+|-------------------------------|------------:|--------------:|---------------------:|
+| SVM (RBF Kernel)              | 0.629       | 0.620         | 0.627                |
+| Logistic Regression           | 0.622       | 0.606         | 0.626                |
+| Linear SVM                    | 0.617       | 0.606         | 0.618                |
+| Linear Discriminant Analysis  | 0.599       | 0.577         | 0.602                |
+| k-Nearest Neighbors (k = 15)  | 0.557       | 0.553         | 0.557                |
+| Decision Tree                 | 0.551       | 0.537         | 0.551                |
+
+</div>
